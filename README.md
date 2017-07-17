@@ -2,7 +2,7 @@
 
 Some public material from my research about textual history. 
 
-##sample data
+## sample data
 See folder sample-data.
 
-###k-proc-app
+### k-proc-app
