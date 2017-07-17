@@ -52,7 +52,7 @@ Now, in terms of TEI XML the `text` code and the `app` code in combination means
                <del>war</del>
                <add>wurde</add>
             </subst> er eines Morgens<lb n="4"/><subst>
-               <del>gefangens</del>
+               <del>gefangen</del>
                <add>verhaftet</add>
             </subst>. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
             <!-- ... --></p>
