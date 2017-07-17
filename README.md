@@ -9,7 +9,9 @@ Some public material from my research about textual history.
 <P PN=7><PP PN=7><LN N=2>2 
 Jemand mußte Josef K. verleumdet haben, denn ohne 
 <LN N=3>3 
-daß er etwas Böses getan hätte, wurde er eines Morgens
+daß er etwas Böses getan hätte, wurde er eines Morgens 
+<LN N=4>4 
+verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
 ```
 
 ### k-proc-app
@@ -41,3 +43,16 @@ verhaftet
 </N>
 ```
 Note that the `&lsaquo;á` etc. are for the angle brackets.
+
+Now, in terms of TEI XML the `text` code and the `app` code in combination means the following:
+
+         <pb n="7"/>
+         <p><lb n="2"/>Jemand mußte Josef K. verleumdet haben, denn ohne<lb
+               n="3"/>daß er etwas Böses getan hätte, <subst>
+               <del>war</del>
+               <add>wurde</add>
+            </subst> er eines Morgens<lb n="4"/><subst>
+               <del>gefangens</del>
+               <add>verhaftet</add>
+            </subst>. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
+            <!-- ... --></p>
