@@ -44,7 +44,7 @@ verhaftet
 ```
 Note that the `&lsaquo;á` etc. are for the angle brackets.
 
-Now, in terms of TEI XML the `text` code and the `app` code in combination means the following:
+Now, in terms of TEI XML the `text` code and the `app` code in combination mean the following:
 
          <pb n="7"/>
          <p><lb n="2"/>Jemand mußte Josef K. verleumdet haben, denn ohne<lb
