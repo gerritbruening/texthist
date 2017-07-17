@@ -56,3 +56,7 @@ Now, in terms of TEI XML the `text` code and the `app` code in combination mean 
                <add>verhaftet</add>
             </subst>. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
             <!-- ... --></p>
+
+The general idea would be transform `text` and `app` in one proper TEI XML encoding and then run analyses on this material, e.g.
+* how many words hat been originally written on one manuscript page? (text prior to all alterations would have to be used)
+* how much of the text is affected by `subst`, `del` and `add` nodes, i.e., subject to variants?
