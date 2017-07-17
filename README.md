@@ -44,6 +44,7 @@ verhaftet
 ```
 Note that the `&lsaquo;á` etc. are for the angle brackets.
 
+### Make sense of text and app code in terms of TEI
 Now, in terms of TEI XML the `text` code and the `app` code in combination mean the following:
 
          <pb n="7"/>
