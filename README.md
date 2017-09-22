@@ -27,7 +27,7 @@ Explanations:
 - `[...]` was deleted in the manuscript.
 - `〈...〉` was added.
 
-The code is a true representation of all these elements and their typographic rendering:
+The following SGML code is a true representation of all these elements and their typographic rendering:
 ```
 <N HANG=Y PN=161><A><LI>3 – 4
 </LI></A> wurde ... verhaftet
