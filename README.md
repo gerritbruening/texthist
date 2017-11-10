@@ -5,6 +5,7 @@ Some public material from my research about textual history.
 ## sample data
 
 ### k-proc-text
+SGML snippet as may be copied manually ("Bearbeiten", "SGML kopieren") from the GUI:
 ```
 <P PN=7><PP PN=7><LN N=2>2 
 Jemand mußte Josef K. verleumdet haben, denn ohne 
@@ -13,6 +14,13 @@ daß er etwas Böses getan hätte, wurde er eines Morgens
 <LN N=4>4 
 verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
 ```
+Corresponding original code from which the above SGML code is generated:
+```
+PN=7PN=7PN=7N=2Jemand mußte Josef K. verleumdet haben, denn ohne
+N=3daß er etwas Böses getan hätte, wurde er eines Morgens
+N=4verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
+```
+This seems to be equivalent to the above code so that it may serve as a proper basis for further processing.
 
 ### k-proc-app
 Before looking at the code, take a look on the original apparatus entry which covers for the variants in the autograph manuscript.
