@@ -35,9 +35,8 @@ marked by "PN=`\d+`PN=`d\+`" followed by 6 `no-break space`s whereas the
 page break has a whole bunch of explicit markup.
 
 #### Page breaks and paragraph breaks coinciding
-```
-N=27die Treppe hinaufstieg, drehte er sich noch einmal um.PN=32N=32 IDPAGE=KKAPp32 PN=32RID=007VA032 TYPE=ALT TEXT="Varianten"PN=32PN=32      N=1Er hätte geradewegs in sein Zimmer gehen können,
-```
+`N=27die Treppe hinaufstieg, drehte er sich noch einmal um.PN=32N=32 IDPAGE=KKAPp32 PN=32RID=007VA032 TYPE=ALT TEXT="Varianten"PN=32PN=32      N=1Er hätte geradewegs in sein Zimmer gehen können,`
+
 When page breaks and paragraph breaks are coinciding, the above 
 mentioned markings are simply concatinated.
 
