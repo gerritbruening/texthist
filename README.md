@@ -23,6 +23,7 @@ N=4verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
 This seems to be equivalent to the above code so that it may serve as a proper basis for further processing.
 
 ####Page vs. paragraph breaks
+
 It is important do distinguish page from paragraph breaks:
 ```
 N=25nicht verstehe, das man aber auch nicht verstehen muß."PN=33PN=33      N=26"Es ist gar nichts Dummes, was Sie gesagt haben Frau
