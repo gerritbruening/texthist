@@ -4,7 +4,7 @@ Some public material from my research about textual history.
 
 ## sample data
 
-### k-proc-text
+### Kafka's Process -- text
 SGML snippet as may be copied manually ("Bearbeiten", "SGML kopieren") from the GUI:
 ```
 <P PN=7><PP PN=7><LN N=2>2 
@@ -40,7 +40,7 @@ page break has a whole bunch of explicit markup.
 When page breaks and paragraph breaks are coinciding, the above 
 mentioned markings are simply concatinated.
 
-### k-proc-app
+### Kafka's Process -- apparatus
 Before looking at the code, take a look on the original apparatus entry which covers for the variants in the autograph manuscript.
 This is how it looks like:
 
