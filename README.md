@@ -22,6 +22,25 @@ N=4verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
 ```
 This seems to be equivalent to the above code so that it may serve as a proper basis for further processing.
 
+####Page vs. paragraph breaks
+It is important do distinguish page from paragraph breaks:
+```
+N=25nicht verstehe, das man aber auch nicht verstehen muß."PN=33PN=33      N=26"Es ist gar nichts Dummes, was Sie gesagt haben Frau
+N=27Grubach, wenigstens bin auch ich zum Teil Ihrer Meinung,
+PN=34N=34 IDPAGE=KKAPp34 PN=34RID=007VA034 TYPE=ALT TEXT="Varianten"PN=34N=1nur urteile ich über das ganze noch schärfer als
+```
+The first event is a paragraph break, the second is 
+a page break. It seems as if the paragraph break is  
+marked by "PN=`\d+`PN=`d\+`" followed by 6 `no-break space`s whereas the 
+page break has a whole bunch of explicit markup.
+
+####Page breaks and paragraph breaks coinciding
+```
+N=27die Treppe hinaufstieg, drehte er sich noch einmal um.PN=32N=32 IDPAGE=KKAPp32 PN=32RID=007VA032 TYPE=ALT TEXT="Varianten"PN=32PN=32      N=1Er hätte geradewegs in sein Zimmer gehen können,
+```
+When page breaks and paragraph breaks are coinciding, the above 
+mentioned markings are simply concatinated.
+
 ### k-proc-app
 Before looking at the code, take a look on the original apparatus entry which covers for the variants in the autograph manuscript.
 This is how it looks like:
