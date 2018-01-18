@@ -70,6 +70,14 @@ verhaftet
 ```
 Note that the `&lsaquo;á` etc. are for the angle brackets.
 
+This is the original code:
+`HANG=Y PN=1613 – 4 wurde ... verhaftet] [war] name='lsaquo' font=symbol code=0225 charset=symbolwurdename='rsaquo' font=symbol code=0241 charset=symbol er eines Morgens [gefangen] name='lsaquo' font=symbol code=0225 charset=symbolverhaftetname='rsaquo' font=symbol code=0241 charset=symbol`
+This is quite untidy.
+1. We need the preceding information that the variant occurs on page 7 of the reading text: `COMHEAD="Der Proceß (Apparatband): Varianten zu S. 7"`.
+1. The line reference `3 -- 4` is stuck together with the (by and large irrelevant) page number of the apparatus page `PN=161`. Note that the line reference may be double digit such as in `PN=16112` which refers to line 12 of the same page in the reading text.
+1. `charset=symbolwurdename='rsaquo'` looks ugly but will be easy to handle.
+
+On the whole it still seems that the original code is sufficient for further processing.
 ### Interprete text and app code in terms of TEI
 Now, in terms of TEI XML the text and apparatus data in combination mean the following:
 
