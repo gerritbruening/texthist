@@ -95,3 +95,8 @@ Now, in terms of TEI XML the text and apparatus data in combination mean the fol
 The general idea would be transform `text` and `app` in one proper TEI XML encoding and then run analyses on this material, e.g.
 * how many words hat been originally written on one manuscript page? (text prior to all alterations would have to be used)
 * how much of the text is affected by `subst`, `del` and `add` nodes, i.e., subject to variants?
+
+### Test and maybe improve martians.py on ms. vs. editio princeps
+* Get plain versions of manuscript text and first printed edition (DTA)
+* compare them to get `[-...-]{+...+}` style variants
+* run [martians.py](https://github.com/dh-trier/martian/blob/master/collation/martians.py) on it, see if any variants are classified correctly
