@@ -11,3 +11,19 @@ Public material from my research about textual history.
 ## related projects
 * [Frankenstein Bicentennial Project](http://slides.com/elisabeshero-bondar/mla_bicentfrank#/)
 * "Martian" project (see ["What Changed When Andy Weir's The Martian Got Edited?"](https://dh2017.adho.org/abstracts/317/317.pdf))
+
+## sub projects
+* Kafka's novels
+  * history of printed editions
+  * manuscript revisions 
+* three versions Hofmannsthal's "Der Turm"
+* Musil's "Mann ohne Eigenschaften"
+* (possibly) Th. Mann's "Doktor Faustus" (XML-ish non-XML data available)
+* some of Schnitzler's works (if data in textual form is available someday) 
+
+## general methodologies
+* lemmatization
+* collation
+* index creation
+* POS tagging
+* metrical / prosodic analysis
