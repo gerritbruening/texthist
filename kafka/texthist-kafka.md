@@ -113,11 +113,12 @@ Now, in terms of TEI XML the text and apparatus data in combination mean the fol
             
 ## software
 
+### fka.xml
+TXSTEP #kopiere script to transform docx import some pieces of the "Process" from the historisch-kritische Franz Kafka-Ausgabe (FKA) to TEI.
+
 ### proc.xml
-
-The base text is Franz Kafka, Der Prozess. Roman, Berlin 1925, taken from http://www.deutschestextarchiv.de/dtaq/book/show/kafka_prozess_1925, with which are collated the following versions:
-
+TXSTEP script to collate four versions of Kafka's "Prozess": 
+1. Franz Kafka, Der Prozess. Roman, Berlin 1925, taken from the [Deutsches Textarchiv](http://www.deutschestextarchiv.de/dtaq/book/show/kafka_prozess_1925) (base text)
 1. Franz Kafka, Gesammelte Werke. Band 1, Frankfurt a.M. 1950 ff., taken from http://www.zeno.org/Literatur/M/Kafka,+Franz/Romane/Der+Proze%C3%9F. A derivative TEI encoded version of this text is to be found in Textgrid.
 2. Franz Kafka, Der Prozeß, Frankfurt am Main, Hamburg 1962 (Fischer Bücherei)
 3. Text of the Kritische Ausgabe, taken from "The critical edition in German of «The Trial» («Der Proceß» )", http://www.kafka.org/index.php?trial
-

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script xmlns="http://www.xstep.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <variables>
+        <char-group name="ok">?{-}\[\]</char-group>
+        <char-group name="ot">?{-}{{}}</char-group>
+        <char-group name="fo">{#}rv</char-group>
+        <char-group name="lg">lg</char-group>
+        <variable type="execution-file" name="execute">file:///C:/Users/Gerrit/txstep/ueb/txstep.tu</variable>
+        <variable type="permanent-file" name="fka-x" code="utf8"
+            >file:///C:/Users/Gerrit/txstep/txt/process.xml</variable>
+        <variable type="permanent-file" name="fka-t" format="tustep" option="erase"
+            >file:///C:/Users/Gerrit/txstep/txt/fka.tf</variable>
+        <variable type="permanent-file" name="fka-x2" code="utf8" option="erase"
+            >file:///C:/Users/Gerrit/txstep/txt/process2.xml</variable>
+    </variables>
+    <transform source="$fka-x" destination="$fka-t">
+        <define-text-units>
+            <text-unit-start>
+                <comparison-table>
+                    <exclusion-string>{{/</exclusion-string>
+                    <comparison-string>{{</comparison-string>
+                </comparison-table>
+            </text-unit-start>
+        </define-text-units>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <exception-string>\[. . .\]</exception-string>
+                        <exception-string>#\[2013\]</exception-string>
+                        <exception-string>#\[2014\]</exception-string>
+                        <exception-string>#\[2018\]</exception-string>
+                        <exception-string>#\[2019\]</exception-string>
+                        <exception-string>#\[2026\]</exception-string>
+                        <string-pair>
+                            <search-string>\[{00}{c:ok}\]</search-string>
+                            <replacement-string>{{del rend="brackets"}}{+2=}{{/del}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{hi rend="italic"}}{|}{00}{c:ot}{|}{{/hi}}</search-string>
+                            <replacement-string>{{add rend="italics"}}{=2=}{{/add}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{hi rend="italic" xml:space="preserve"}}{|}{00}{c:ot}{|}{{/hi}}</search-string>
+                            <replacement-string>{{add rend="italics" xml:space="preserve"}}{=2=}{{/add}}</replacement-string>
+                        </string-pair>
+                        <!-- Entfernung der Zeilenzählung -->
+                        <string-pair>
+                            <search-string>{{p}}{#}{{/p}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{p}}{{hi rend="bold"}}{|}{#}{|}{{/hi}}{{/p}}</search-string>
+                            <replacement-string>{{pb ed="fka-seitenende" n="{=2=}"/}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{p}}^&*{|}{00}{c:fo}{|}^&*{{/p}}</search-string>
+                            <replacement-string>{{pb type="edfol" n="{=2=}"/}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{p}}{|}{#}*{0}\] *lt;*gt;{|}{{/p}}</search-string>
+                            <replacement-string>{{note type="editorial"}}{=2=}{{/note}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>¿</search-string>
+                            <replacement-string>{{gap reason="unreadable"/}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <remove-blanks where="both"/>
+        <suppress-blank-lines/>
+        <output-records max-length="120"/>
+    </transform>
+    <transform source="$fka-t" destination="$fka-x2"/>
+    <display file="$fka-x2"/>
+</script>
