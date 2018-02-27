@@ -119,6 +119,6 @@ TXSTEP #kopiere script to transform docx import some pieces of the "Process" fro
 ### proc.xml
 TXSTEP script to collate four versions of Kafka's "Prozess": 
 1. Franz Kafka, Der Prozess. Roman, Berlin 1925, taken from the [Deutsches Textarchiv](http://www.deutschestextarchiv.de/dtaq/book/show/kafka_prozess_1925) (base text)
-1. Franz Kafka, Gesammelte Werke. Band 1, Frankfurt a.M. 1950 ff., taken from http://www.zeno.org/Literatur/M/Kafka,+Franz/Romane/Der+Proze%C3%9F. A derivative TEI encoded version of this text is to be found in Textgrid.
+1. Franz Kafka, Gesammelte Werke. Band 1, Frankfurt a.M. 1950 ff., taken from [zeno.org](http://www.zeno.org/Literatur/M/Kafka,+Franz/Romane/Der+Proze%C3%9F). A derivative TEI encoded version of this text is to be found in Textgrid.
 2. Franz Kafka, Der Prozeß, Frankfurt am Main, Hamburg 1962 (Fischer Bücherei)
-3. Text of the Kritische Ausgabe, taken from "The critical edition in German of «The Trial» («Der Proceß» )", http://www.kafka.org/index.php?trial
+3. transcription of the "Prozess" in the Kritische Ausgabe (Fischer), taken from ["The critical edition in German of «The Trial» («Der Proceß» )"](http://www.kafka.org/index.php?trial) (kafka.org)
