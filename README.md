@@ -27,3 +27,8 @@ Public material from my research about textual history.
 * index creation
 * POS tagging
 * metrical / prosodic analysis
+
+## collation tools
+
+### CollateX
+For first steps see http://collatex.obdurodon.org/.
