@@ -32,3 +32,9 @@ Public material from my research about textual history.
 
 ### CollateX
 For first steps see http://collatex.obdurodon.org/.
+
+### TRAViz
+(Text Re-use Alignment Visualization, see http://www.traviz.vizcovery.org/index.html)
+
+### TUSTEP's vergleiche & vergleich-aufbereite
+See TXSTEP (http://www.txstep.de/) collation scripts in sub projects. 
