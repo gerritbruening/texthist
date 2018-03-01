@@ -2,7 +2,7 @@ Subproject Musil
 =============================
 # Data
 is available in the "Klagenfurter Ausgabe" (CD-ROM) which is being converted to XML and encoded in TEI.
-See https://github.com/musilonline/musil-conversion.
+See https://github.com/musilonline/musil-convert.
 
 # Focus
 would be on those chapters of the "Mann ohne Eigenschaften" of which multiple stages have survived.
