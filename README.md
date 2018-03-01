@@ -8,18 +8,20 @@ Public material from my research about textual history.
 * Hoenen, Armin, and Gerrit Brüning. 2018. "Zur Stemmatologie neuerer Überlieferungen." In _DARIAH-DE Working Papers_ (forthcoming).
 * Brüning, Gerrit. 2018. "Gültiger Wortlaut und 'sinnliche Masse'. Zur Textkonstitution des 'Faust II'." In _Zeitschrift für deutsche Philologie 138_ (forthcoming).
 
-## related projects
+## related projects & cooperations
 * [Frankenstein Bicentennial Project](http://slides.com/elisabeshero-bondar/mla_bicentfrank#/)
 * "Martian" project (see ["What Changed When Andy Weir's The Martian Got Edited?"](https://dh2017.adho.org/abstracts/317/317.pdf))
+* [QuaDramA](https://github.com/quadrama) 
 
 ## sub projects
 * Kafka's novels
   * history of printed editions
   * manuscript revisions 
-* three versions Hofmannsthal's "Der Turm"
+* the three versions Hofmannsthal's "Der Turm"
 * Musil's "Mann ohne Eigenschaften"
 * (possibly) Th. Mann's "Doktor Faustus" (XML-ish non-XML data available)
-* some of Schnitzler's works (if data in textual form is available someday) 
+* (possibly) some of Schnitzler's works (if data in textual form is available someday)
+* (hopefully) Ilse Aichinger's journal essays (later published in book form)  
 
 ## general methodologies
 * lemmatization
