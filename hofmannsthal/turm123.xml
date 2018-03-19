@@ -209,16 +209,17 @@
             <case-sensitive value="no"/>
         </normalize>
     </compare>
-    <!--<compare versiona="t1" versionb="t3" variants="diff2" type="corrections" listing="-">
+    <compare versiona="t1" versionb="t3" variants="diff2" type="corrections" listing="-">
         <compare-units mode="word"/>
         <add-context>
             <omission length-before="0" length-lemma="5" length-after="0"/>
             <replacement length-before="0" length-lemma="3" length-after="0"/>
             <insertion length-before="1" length-after="0"/>
         </add-context>
+        <select-area versiona="1.1-15.51,99" versionb="1.1-19.34,99"/>
         <version-id>T3</version-id>
-    </compare>-->    
-    <collate source="t1" mode="single-witness" diff-file="diff1" listing="$diff-list"><!-- 'diff2 -->
+    </compare>    
+    <collate source="t1" mode="single-witness" diff-file="diff1'diff2" listing="$diff-list">
         <list lines="all"/>
     </collate>
     <display file="diff-list" type="listing" mode="ps-landscape"/>
