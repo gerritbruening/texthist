@@ -100,7 +100,7 @@
                 </exchange>
             </modify>
         </pass>
-        <!-- remove line and page breaks: -->
+        <!-- remove line and page breaks and some other stuff: -->
         <pass>
             <modify>
                 <exchange>
@@ -113,6 +113,10 @@
                             <search-string>{{pb+n="kha^_XVI{#}^_{#}"/}}</search-string>
                             <replacement-string/>
                         </string-pair>
+                        <string-pair>
+                            <search-string>+rend="blunt"</search-string>
+                            <replacement-string/>
+                        </string-pair>
                     </exchange-table>
                 </exchange>
             </modify>
@@ -123,11 +127,7 @@
                 <exchange>
                     <exchange-table>
                         <string-pair>
-                            <search-string>{{hi+rend="smallCaps"}}{|}{00}{\a}{|} {|}{00}{\a}{|}{{/hi}}</search-string>
-                            <replacement-string>{=2+}{=3=}{=4+}</replacement-string>
-                        </string-pair>
-                        <string-pair>
-                            <search-string>{{hi+rend="smallCaps"}}{|}{00}{\a}{|}{{/hi}}</search-string>
+                            <search-string>{{hi+rend="smallCaps"}}{|}{00}?{|}{{/hi}}</search-string>
                             <replacement-string>{=2+}</replacement-string>
                         </string-pair>
                     </exchange-table>
@@ -177,6 +177,7 @@
                     <exclusion-string>{{hi+</exclusion-string>
                     <exclusion-string>{{speaker</exclusion-string>
                     <exclusion-string>{{stage</exclusion-string>
+                    <exclusion-string>{{p</exclusion-string>
                     <comparison-string>{{</comparison-string>
                 </comparison-table>
             </text-unit-start>
@@ -187,11 +188,13 @@
                 <exception-string>{{speaker</exception-string>
                 <exception-string>{{stage+type="inline"</exception-string>
                 <exception-string>{{/</exception-string>
+                <search-string>{{stage+type="block"}} {{p</search-string>
                 <search-string>{{</search-string>
             </search-table>
         </new-line-before>
         <suppress-blank-lines/>
-         <output-records max-length="120"/> <!--when necessary-->
+        <output-records max-length="120"/>
+        <!--when necessary-->
     </transform>
     <transform source="t2-x" destination="intmedfile" take-params="ko1" mode="+" option="erase"/>
     <transform source="intmedfile" destination="t2" take-params="ko2"/>
@@ -216,9 +219,9 @@
             <replacement length-before="0" length-lemma="3" length-after="0"/>
             <insertion length-before="1" length-after="0"/>
         </add-context>
-        <select-area versiona="1.1-36.45,99" versionb="1.1-46.4,99"/>
+        <select-area versiona="1.1-36.45,99" versionb="1.1-45.57/04,99"/>
         <version-id>T3</version-id>
-    </compare>    
+    </compare>
     <collate source="t1" mode="single-witness" diff-file="diff1'diff2" listing="$diff-list">
         <list lines="all"/>
     </collate>
