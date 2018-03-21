@@ -8,6 +8,8 @@
         <variable type="scratch-file" name="ko2"/>
         <variable type="permanent-file" format="tustep" option="erase" name="intmedfile"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/intmedfile.tf</variable>
+        <variable type="permanent-file" format="tustep" option="erase" name="intmedfile2"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/intmedfile2.tf</variable>
         <variable type="permanent-file" code="UTF-8" name="t1-x"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/t1.xml</variable>
         <variable type="permanent-file" code="UTF-8" name="t2-x"
@@ -34,7 +36,7 @@
                 <comparison-table>
                     <exclusion-string>{{/</exclusion-string>
                     <exclusion-string>{{fw</exclusion-string>
-                    <exclusion-string>{{lb</exclusion-string>
+                    <exclusion-string>{{lb n=</exclusion-string>
                     <exclusion-string>{{pb</exclusion-string>
                     <comparison-string>{{</comparison-string>
                 </comparison-table>
@@ -170,7 +172,7 @@
         <suppress-blank-lines/>
     </transform>
     <!-- ko 2 h: define record structure: -->
-    <transform source="intmedfile" destination="t1" save-params="$ko2" mode="+">
+    <transform source="intmedfile" destination="intmedfile2" save-params="$ko2" mode="+">
         <define-text-units>
             <text-unit-start>
                 <comparison-table>
@@ -188,18 +190,21 @@
                 <exception-string>{{speaker</exception-string>
                 <exception-string>{{stage+type="inline"</exception-string>
                 <exception-string>{{/</exception-string>
+                <search-string>{{set}} {{p</search-string>
                 <search-string>{{stage+type="block"}} {{p</search-string>
                 <search-string>{{</search-string>
             </search-table>
         </new-line-before>
         <suppress-blank-lines/>
+    </transform>
+    <transform source="intmedfile2" destination="t1">
         <output-records max-length="120"/>
         <!--when necessary-->
     </transform>
-    <transform source="t2-x" destination="intmedfile" take-params="ko1" mode="+" option="erase"/>
-    <transform source="intmedfile" destination="t2" take-params="ko2"/>
-    <transform source="t3-x" destination="intmedfile" take-params="ko1" mode="+" option="erase"/>
-    <transform source="intmedfile" destination="t3" take-params="ko2"/>
+    <transform source="t2-x" destination="intmedfile" take-params="ko1" option="erase"/>
+    <transform source="intmedfile" destination="t2" take-params="ko2" mode="+"/>
+    <transform source="t3-x" destination="intmedfile" take-params="ko1" option="erase"/>
+    <transform source="intmedfile" destination="t3" take-params="ko2" mode="+"/>
     <compare versiona="t1" versionb="t2" variants="diff1" type="corrections" listing="-">
         <compare-units mode="word"/>
         <add-context>
@@ -219,7 +224,7 @@
             <replacement length-before="0" length-lemma="3" length-after="0"/>
             <insertion length-before="1" length-after="0"/>
         </add-context>
-        <select-area versiona="1.1-36.45,99" versionb="1.1-45.57/04,99"/>
+        <select-area versiona="1.1-29.20,99" versionb="1.1-23.2,99"/>
         <version-id>T3</version-id>
     </compare>
     <collate source="t1" mode="single-witness" diff-file="diff1'diff2" listing="$diff-list">
