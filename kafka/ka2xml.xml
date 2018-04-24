@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script xmlns="http://www.xstep.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <variables>
+        <variable type="execution-file" name="execute"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/ueb/txstep.tu</variable>
+        <variable type="permanent-file" name="ka-t" code="utf8"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proz_txt.txt</variable>
+        <variable type="permanent-file" name="ka" format="tustep" option="erase"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/ka.tf</variable>
+    </variables>
+    <transform source="ka-t" destination="ka">
+        <!-- removed as unique header:
+            KAF006PN="–" TYPE=literary N=006 VOLID=KKAP GENDER=m DATE=1990 TITLE="Der Proceß" COMHEAD="Der Proceß"N="–" IDPAGE=KKAPp3 PN=3PN=3Der ProceßN="–" IDPAGE=KKAPp5 PN=5AUTHOR="Kafka‚ F. von" GENDER=M TITLE="Der Proceß" GENRE=proseROM REF1=006001 DATE=1914 DATE2=1915 SOMHEAD="Der Proceß" SOMLEVEL=1 COMHEAD="Der Proceß" ID=007RET01MAIN=TRUE PN=5Der ProceßRID=00700501 TYPE=NOTES PN=5RID=00713101 TYPE=ALT TEXT="Editorische Eingriffe" PN=5RID=00715901 TYPE=ALT TEXT="Varianten" PN=5
+            -->
+        <!-- preparatory cleanup steps -->
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>N={#} IDPAGE=KKAPp{#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>SOMHEAD="*"</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>SOMLEVEL={#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>COMHEAD="*"</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>PN={#}{\A}{\a}*{|}\R\I\D</search-string>
+                            <replacement-string>{=2=}</replacement-string>
+                        </string-pair>
+                        <!-- (see next pass) -->
+                        <string-pair>
+                            <search-string>TYPE=ALT</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>TEXT="*"</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>PN={#}{\A}{\a}*</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>RID={#}{\A}{\A}{#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>AUTHOR="*"</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>GENDER=M</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>GENRE=proseROM</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>REF1={#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>DATE{0}{#}={#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>MAIN=TRUE</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>RID={#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>TYPE=NOTES</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <!-- add basic markup -->
+                        <string-pair>
+                            <search-string>PN={|}{#}</search-string>
+                            <replacement-string>{{pb n="{=2=}"/}}</replacement-string>
+                        </string-pair>
+                        <!-- (see next path) -->
+                        <string-pair>
+                            <search-string>NAME="{|}*{|}"</search-string>
+                            <replacement-string>{{head type="chapter"}}{=2=}{{/head}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>TITLE="{|}*{|}"</search-string>
+                            <replacement-string>{{head type="section"}}{=2=}{{/head}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>\N={|}{#}</search-string>
+                            <replacement-string>{{lb n="{=2=}"/}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <new-line-before>
+            <search-table>
+                <search-string>{{head</search-string>
+            </search-table>
+        </new-line-before>
+        <!-- removed as unique trailer:
+        AUTHOR="Kafka‚ F." GENDER=M SEARCH=LITTEXT TYPE=INHALT NAME="Inhalt" SOMHEAD="Der Proceß: Inhalt" SOMLEVEL=1 COMHEAD="Der Proceß: Inhalt"PN=357InhaltPN=357VerhaftungPN=3577PN=357Gespräch mit Frau Grubach / Dann Fräulein BürstnerPN=35730PN=357Erste UntersuchungPN=35749PN=357Im leeren Sitzungssaal / Der Student / Die KanzleienPN=35773PN=357Der PrüglerPN=357108PN=357Der Onkel / LeniPN=357118PN=357Advokat / Fabrikant / MalerPN=357149PN=357Kaufmann Block / Kündigung des AdvokatenPN=357225PN=357Im DomPN=357270PN=357EndePN=357305PN=357PN=357PN=357FragmentePN=357PN=357PN=357PN=357B.'s FreundinPN=357315PN=357StaatsanwaltPN=357327PN=357Zu ElsaPN=357336PN=357Kampf mit dem Direktor-StellvertreterPN=357339PN=357Das HausPN=357346PN=357Fahrt zur MutterPN=357351PN="–" TITLE="Der Proceß (Apparatband): 1990" STATUS=COPYR COPYR="Text der Werke Franz Kafka in der Fassung der KKA © 1982, 1983, 1990, 1992, 1993, 1994 Schocken Books Inc. New York City, USA. Kommentare und Apparat © 1982, 1983, 1990, 1992, 1993, 1994 S. Fischer Verlag GmbH, Frankfurt am Main." COPYR2="Text of Franz Kafka’s works used in the Critical Edition © 1982, 1983, 1990, 1992, 1993, 1994 Schocken Books Inc. New York City, USA. Commentary and apparatus © 1982, 1983, 1990, 1992, 1993, 1994 S. Fischer Verlag GmbH, Frankfurt am Main." SOMHEAD="Der Proceß (Apparatband)" SOMLEVEL=CLS COMHEAD="Der Proceß (Apparatband)"PN="–" COMHEAD="Der Proceß (Apparatband): Bibliographische Angaben"Kafka, F.: Kritische Ausgabe: Der Proceß: Apparatband (1990)CambridgeChadwyck-Healey1999Kafkas Werke: Kritische Ausgabe auf CD-ROM
+        -->
+    </transform>
+</script>
