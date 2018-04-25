@@ -24,10 +24,6 @@
                 <exchange>
                     <exchange-table>
                         <string-pair>
-                            <search-string>N={|}{#}{|} IDPAGE={|}KKAP{|}p{#}</search-string>
-                            <replacement-string>{{pb ed="{=4=}" n="{=2=}"/}}</replacement-string>
-                        </string-pair>
-                        <string-pair>
                             <search-string>SOMHEAD="*"</search-string>
                             <replacement-string/>
                         </string-pair>
@@ -37,35 +33,6 @@
                         </string-pair>
                         <string-pair>
                             <search-string>COMHEAD="*"</search-string>
-                            <replacement-string/>
-                        </string-pair>
-                        <string-pair>
-                            <search-string>PN={#}{\A}{\a}*{|}\R\I\D</search-string>
-                            <replacement-string>{=2=}</replacement-string>
-                        </string-pair>
-                        <!-- (see next pass) -->
-                        <string-pair>
-                            <search-string>TYPE=ALT</search-string>
-                            <replacement-string/>
-                        </string-pair>
-                        <string-pair>
-                            <search-string>TEXT="*"</search-string>
-                            <replacement-string/>
-                        </string-pair>
-                    </exchange-table>
-                </exchange>
-            </modify>
-        </pass>
-        <pass>
-            <modify>
-                <exchange>
-                    <exchange-table>
-                        <string-pair>
-                            <search-string>PN={#}{\A}{\a}*</search-string>
-                            <replacement-string/>
-                        </string-pair>
-                        <string-pair>
-                            <search-string>RID={#}{\A}{\A}{#}</search-string>
                             <replacement-string/>
                         </string-pair>
                         <string-pair>
@@ -81,10 +48,6 @@
                             <replacement-string/>
                         </string-pair>
                         <string-pair>
-                            <search-string>REF1={#}</search-string>
-                            <replacement-string/>
-                        </string-pair>
-                        <string-pair>
                             <search-string>DATE{0}{#}={#}</search-string>
                             <replacement-string/>
                         </string-pair>
@@ -93,20 +56,116 @@
                             <replacement-string/>
                         </string-pair>
                         <string-pair>
-                            <search-string>RID={#}</search-string>
+                            <search-string>TYPE=ALT</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>TEXT="*"</search-string>
                             <replacement-string/>
                         </string-pair>
                         <string-pair>
                             <search-string>TYPE=NOTES</search-string>
                             <replacement-string/>
                         </string-pair>
-                        <!-- add basic markup -->
+                        <string-pair>
+                            <search-string>REF1={#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>PN={#}{\A}{\a}*{|}\R\I\D</search-string>
+                            <replacement-string>{=2=}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>PN={#}{\A}{\a}*</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <!-- (depends on previous pass) -->
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>RID={#}{\A}{\A}{#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>RID={#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <!-- (depends on previous pass) -->
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <!-- add pb -->
+                        <string-pair>
+                            <search-string>N={|}{#}{|} IDPAGE={|}KKAP{|}p{#}</search-string>
+                            <replacement-string>{{pb ed="{=4=}" n="{=2=}"/}}</replacement-string>
+                        </string-pair>
+                        <!-- (only these IDPAGE numbers are needed) -->
                         <string-pair>
                             <search-string>PN={#}</search-string>
                             <replacement-string/>
                         </string-pair>
-                        <!-- (only IDPAGE numbers are needed, see above) 
-                        (see next pass) -->
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <!-- add lb -->
+                        <string-pair>
+                            <search-string>\N={|}{#}</search-string>
+                            <replacement-string>{{lb n="{=2=}"/}}</replacement-string>
+                        </string-pair>
+                        <!-- (depends on previous pass) -->
+                        <string-pair>
+                            <search-string>\N="{|}{#}{|}#\[201A\] {|}{#}{|}"</search-string>
+                            <replacement-string>{{lb n="{=2=}-{=4=}"/}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <!-- add head -->
                         <string-pair>
                             <search-string>NAME="{|}*{|}"</search-string>
                             <replacement-string>{{head type="chapter"}}{=2=}{{/head}}</replacement-string>
@@ -123,14 +182,7 @@
             <modify>
                 <exchange>
                     <exchange-table>
-                        <string-pair>
-                            <search-string>\N={|}{#}</search-string>
-                            <replacement-string>{{lb n="{=2=}"/}}</replacement-string>
-                        </string-pair>
-                        <string-pair>
-                            <search-string>\N="{|}{#}{|}#\[201A\] {|}{#}{|}"</search-string>
-                            <replacement-string>{{lb n="{=2=}-{=4=}"/}}</replacement-string>
-                        </string-pair>
+                        <!-- add p -->
                         <string-pair>
                             <search-string>{{head type="chapter"}}*{{/head}}</search-string>
                             <replacement-string>{=1=}{{milestone unit="p"/}}</replacement-string>
