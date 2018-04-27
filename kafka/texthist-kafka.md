@@ -17,12 +17,11 @@ However, this requires complex preprocessing, since
 * app entries are encoded on the basis of their typographic appearance 
 * app entries are linked to the text via human-readable pointers which would have to be parsed and interpreted
 
-
-
 # data
 
 ## Kafka's "Process" -- text
-SGML snippet as may be copied manually ("Bearbeiten", "SGML kopieren") from the GUI:
+The digital version of the KKA uses SGML that may be copied manually (but only piecemeal) from the GUI ("Bearbeiten", "SGML kopieren"). 
+Here is a snippet: 
 ```
 <P PN=7><PP PN=7><LN N=2>2 
 Jemand mußte Josef K. verleumdet haben, denn ohne 
@@ -31,13 +30,14 @@ daß er etwas Böses getan hätte, wurde er eines Morgens
 <LN N=4>4 
 verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
 ```
-Corresponding original code from which the above SGML code is generated:
+The SGML is generated from a simplified code that comes without any explicit tag delimiters:
 ```
 PN=7PN=7PN=7N=2Jemand mußte Josef K. verleumdet haben, denn ohne
 N=3daß er etwas Böses getan hätte, wurde er eines Morgens
 N=4verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
 ```
-This seems to be equivalent to the above code so that it may serve as a proper basis for further processing.
+This code can be copied in one go. 
+It is processed into a TEI-like XML by [ka2xml.xml](kafka/ka2xml.xml). 
 
 ### Page vs. paragraph breaks
 It is important do distinguish page from paragraph breaks:
