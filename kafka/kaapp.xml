@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script xmlns="http://www.xstep.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <variables>
+        <variable type="execution-file" name="execute"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/ueb/txstep.tu</variable>
+        <variable type="permanent-file" name="kkapem-t" code="utf8"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proz_app-emend.txt</variable>
+        <variable type="permanent-file" name="kkapem" format="tustep" option="erase"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kkap_emend.tf</variable>
+        <variable type="permanent-file" name="kkapem-txt" code="utf8" option="erase"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kkap_emend.txt</variable>
+    </variables>
+    <transform source="kkapem-t" destination="kkapem" mode="+">
+        <!-- manually removed
+            N=131 IDPAGE=KKAPAppp131 PN=131TYPE=LES NAME="Editorische Eingriffe" SOM=STOP ID=00713101 SOMHEAD="Der Proceß [Apparat]: Editorische Eingriffe" SOMLEVEL=2 COMHEAD="Der Proceß (Apparatband): Editorische Eingriffe"PN=131Editorische EingriffeN=133 IDPAGE=KKAPAppp133 PN=133
+            -->
+        <define-text-units>
+            <text-unit-start>
+                <comparison-table>
+                    <comparison-string>HANG=Y</comparison-string>
+                    <!-- <no_lf/> is inserted somewhere, with a new record after it.
+                        comparison-string makes sure that the record structure is clean. -->
+                </comparison-table>
+            </text-unit-start>
+        </define-text-units>
+        <!-- preparatory cleanup: -->
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>ID={#}EE{#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>COMHEAD="Der Proceß (Apparatband): Editorische Eingriffe: S. {#}"</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>ALIGN=LEFT</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <!-- add page reference: -->
+                        <string-pair>
+                            <search-string>N={|}{#}{|} NAME="#\[2013\]"</search-string>
+                            <replacement-string>{{refPage n="{=2=}"/}}</replacement-string>
+                        </string-pair>
+                        <!-- app volume page: -->
+                        <string-pair>
+                            <search-string>PN={|}{#}{|}RIDPAGE=KKAPp{#}</search-string>
+                            <replacement-string>{{pb ed="KKAP-App" n="{=2=}"/}}</replacement-string>
+                        </string-pair>
+                        <!-- add line ref: -->
+                        <string-pair>
+                            <search-string>HANG=Y PN={\0}{\0}{\0}{|}{00}{\0}{|} #\[2013\] {|}{00}{\0}</search-string>
+                            <replacement-string>{{refLine n="{=2=}-{=4=}"/}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>HANG=Y PN={\0}{\0}{\0}{|}{00}{\0}</search-string>
+                            <replacement-string>{{refLine n="{=2=}"/}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>||</search-string>
+                            <replacement-string>{{pb type="wit"/}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>|</search-string>
+                            <replacement-string>{{lb type="wit"/}}</replacement-string>
+                        </string-pair>
+                        <!-- (depends on previous pass) -->
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table/>
+                </exchange>
+            </modify>
+        </pass>
+        <new-line-before>
+            <search-table>
+                <search-string>{{refPage</search-string>
+                <search-string>{{refLine</search-string>
+            </search-table>
+        </new-line-before>
+        <!--<output-records max-length="120"/>-->
+    </transform>
+    <transform source="kkapem" destination="kkapem-txt"/>
+</script>
