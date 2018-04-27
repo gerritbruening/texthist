@@ -37,7 +37,7 @@ N=3daß er etwas Böses getan hätte, wurde er eines Morgens
 N=4verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
 ```
 This code can be copied in one go. 
-It is processed into a TEI-like XML by [ka2xml.xml](kafka/ka2xml.xml). 
+It is processed into a TEI-like XML by [ka2xml.xml](ka2xml.xml). 
 
 ### Page vs. paragraph breaks
 It is important do distinguish page from paragraph breaks:
