@@ -61,7 +61,7 @@ mentioned markings are simply concatinated.
 Before looking at the code, take a look on the original apparatus entry which covers for the variants in the autograph manuscript.
 This is how it looks like:
 
-![grafik](https://github.com/gerritbruening/texthist/blob/master/sample-data/img/k-app_7%2C3-4.PNG)
+![grafik](https://github.com/gerritbruening/texthist/blob/master/kafka/sample-data/img/k-app_7%2C3-4.PNG)
 
 Explanations:
 - `7` is the page number reference.
