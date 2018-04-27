@@ -49,6 +49,11 @@ This code can be copied in one go. It is processed into a TEI-like XML by [ka2xm
 
 Some important characteristics of the source code are documented in the following.
 
+### Line numbering
+The line numbering is easy to find (`N=7` etc.).
+Chapter headings come without explicit line numbering.
+But as they are always preceded by a page break, it can be concluded that the always appear in line `1` of the respective page.  
+
 ### Page vs. paragraph breaks
 To get the correct paragraph structure from the data it is important to distinguish page from paragraph breaks:
 ```
@@ -68,8 +73,27 @@ mentioned markings are simply concatinated:
 `N=27die Treppe hinaufstieg, drehte er sich noch einmal um.PN=32N=32 IDPAGE=KKAPp32 PN=32RID=007VA032 TYPE=ALT TEXT="Varianten"PN=32PN=32      N=1Er hätte geradewegs in sein Zimmer gehen können,`
 
 ## Kafka's "Process" -- apparatus
+A good part of the editorial interventions made in the KKA are recorded individually.
+The original code looks like this:
+
+`N=7 NAME="–" ID=007EE007 COMHEAD="Der Proceß (Apparatband): Editorische Eingriffe: S. 7"ALIGN=LEFT PN=133RIDPAGE=KKAPp77HANG=Y PN=1331 Verhaftung] Emendiert nach ErstdruckHANG=Y PN=1332 verleumdet] verläumdetHANG=Y PN=1334 – 5 Zimmervermieterin,] Zimmervermieterin |`
+
+This is processed to some kind of proto XML by [kaapp.xml](kaapp.xml):
+
+```xml
+<refPage n="7"/>   <pb ed="KKAP-App" n="133"/>
+<refLine n="1"/> Verhaftung] Emendiert nach Erstdruck
+<refLine n="2"/> verleumdet] verläumdet
+<refLine n="4-5"/> Zimmervermieterin,] Zimmervermieterin <lb type="wit"/>
+```
+
+Characteristics:
+* `Emendiert nach Erstdruck` is misleading; it should be in italics but is not. Thus, it appears as if it was author's text.
+* `refPage/@n` and `refLine/@n` may be combined to proper references such as `<refLine n="7,1"/>`
+* some ranges such as `n="4-5"` have no direct correspondence in the text (see above) because there the hyphenation is dissolved, while the apparatus entries of the printed editions are preserved as they are.
 
 ### editorial emendations
+
 
 ### author's variants
 Before looking at the code, take a look on the original apparatus entry which covers for the variants in the autograph manuscript.
