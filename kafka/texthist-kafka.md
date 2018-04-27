@@ -36,7 +36,17 @@ PN=7PN=7PN=7N=2Jemand mußte Josef K. verleumdet haben, denn ohne
 N=3daß er etwas Böses getan hätte, wurde er eines Morgens
 N=4verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
 ```
-This code can be copied in one go. It is processed into a TEI-like XML by [ka2xml.xml](ka2xml.xml).
+This code can be copied in one go. It is processed into a TEI-like XML by [ka2xml.xml](ka2xml.xml):
+
+```xml
+<pb ed="KKAP" n="7"/>
+<head type="chapter">Verhaftung</head>
+<milestone unit="p"/>
+<lb n="2"/>Jemand mußte Josef K. verleumdet haben, denn ohne
+<lb n="3"/>daß er etwas Böses getan hätte, wurde er eines Morgens
+<lb n="4"/>verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
+```
+
 Some important characteristics of the source code are documented in the following.
 
 ### Page vs. paragraph breaks
