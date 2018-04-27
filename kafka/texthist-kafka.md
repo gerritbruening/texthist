@@ -73,6 +73,8 @@ mentioned markings are simply concatinated:
 `N=27die Treppe hinaufstieg, drehte er sich noch einmal um.PN=32N=32 IDPAGE=KKAPp32 PN=32RID=007VA032 TYPE=ALT TEXT="Varianten"PN=32PN=32      N=1Er hätte geradewegs in sein Zimmer gehen können,`
 
 ## Kafka's "Process" -- apparatus
+
+### editorial emendations
 A good part of the editorial interventions made in the KKA are recorded individually.
 The original code looks like this:
 
@@ -91,9 +93,6 @@ Characteristics:
 * `Emendiert nach Erstdruck` is misleading; it should be in italics but is not. Thus, it appears as if it was author's text.
 * `refPage/@n` and `refLine/@n` may be combined to proper references such as `<refLine n="7,1"/>`
 * some ranges such as `n="4-5"` have no direct correspondence in the text (see above) because there the hyphenation is dissolved, while the apparatus entries of the printed editions are preserved as they are.
-
-### editorial emendations
-
 
 ### author's variants
 Before looking at the code, take a look on the original apparatus entry which covers for the variants in the autograph manuscript.
