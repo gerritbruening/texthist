@@ -22,7 +22,7 @@ However, this requires complex preprocessing, since
 ## Kafka's "Process" -- text
 The digital version of the KKA uses SGML that may be copied manually (but only piecemeal) from the GUI ("Bearbeiten", "SGML kopieren"). 
 Here is a snippet: 
-```
+```xml
 <P PN=7><PP PN=7><LN N=2>2 
 Jemand mußte Josef K. verleumdet haben, denn ohne 
 <LN N=3>3 
@@ -36,28 +36,32 @@ PN=7PN=7PN=7N=2Jemand mußte Josef K. verleumdet haben, denn ohne
 N=3daß er etwas Böses getan hätte, wurde er eines Morgens
 N=4verhaftet. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
 ```
-This code can be copied in one go. 
-It is processed into a TEI-like XML by [ka2xml.xml](ka2xml.xml). 
+This code can be copied in one go. It is processed into a TEI-like XML by [ka2xml.xml](ka2xml.xml).
+Some important characteristics of the source code are documented in the following.
 
 ### Page vs. paragraph breaks
-It is important do distinguish page from paragraph breaks:
+To get the correct paragraph structure from the data it is important to distinguish page from paragraph breaks:
 ```
 N=25nicht verstehe, das man aber auch nicht verstehen muß."PN=33PN=33      N=26"Es ist gar nichts Dummes, was Sie gesagt haben Frau
 N=27Grubach, wenigstens bin auch ich zum Teil Ihrer Meinung,
 PN=34N=34 IDPAGE=KKAPp34 PN=34RID=007VA034 TYPE=ALT TEXT="Varianten"PN=34N=1nur urteile ich über das ganze noch schärfer als
 ```
-The first event is a paragraph break, the second is 
-a page break. It seems as if the paragraph break is  
-marked by "PN=`\d+`PN=`d\+`" followed by 6 `no-break space`s whereas the 
-page break has a whole bunch of explicit markup.
+The first event is a paragraph break, the second is a page break. 
+The paragraph break is marked by `      `, i.e., 6 no-break spaces, preceded by `PN=33PN=33`. 
+The latter is redundant because the beginning of page 33 is marked earlier.
 
-### Page breaks and paragraph breaks coinciding
-`N=27die Treppe hinaufstieg, drehte er sich noch einmal um.PN=32N=32 IDPAGE=KKAPp32 PN=32RID=007VA032 TYPE=ALT TEXT="Varianten"PN=32PN=32      N=1Er hätte geradewegs in sein Zimmer gehen können,`
+The page break is marked by a whole bunch of explicit markup most of which is redundant..
 
 When page breaks and paragraph breaks are coinciding, the above 
-mentioned markings are simply concatinated.
+mentioned markings are simply concatinated:
+
+`N=27die Treppe hinaufstieg, drehte er sich noch einmal um.PN=32N=32 IDPAGE=KKAPp32 PN=32RID=007VA032 TYPE=ALT TEXT="Varianten"PN=32PN=32      N=1Er hätte geradewegs in sein Zimmer gehen können,`
 
 ## Kafka's "Process" -- apparatus
+
+### editorial emendations
+
+### author's variants
 Before looking at the code, take a look on the original apparatus entry which covers for the variants in the autograph manuscript.
 This is how it looks like:
 
