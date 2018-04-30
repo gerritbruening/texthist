@@ -8,7 +8,7 @@
         <variable type="permanent-file" name="kkapem" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kkap_emend.tf</variable>
         <variable type="permanent-file" name="kkapem-txt" code="utf8" option="erase"
-            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kkap_emend.txt</variable>
+            >file:///C:/Users/bruening.FDH-FFM//github/gerritbruening/texthist-data/kafka/kka/kkap_emend.txt</variable>
     </variables>
     <transform source="kkapem-t" destination="kkapem" mode="+">
         <!-- manually removed

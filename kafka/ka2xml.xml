@@ -8,7 +8,7 @@
         <variable type="permanent-file" name="ka" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/ka.tf</variable>
         <variable type="permanent-file" name="ka-x" code="utf8" option="erase"
-            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proz_txt.xml</variable>
+            >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/kka/kkap.xml</variable>
     </variables>
     <transform source="ka-t" destination="ka" mode="+">
         <!-- removed as unique header:
@@ -197,21 +197,11 @@
         </pass>
         <new-line-before>
             <search-table>
-                <search-string>{{text}}</search-string>
-                <search-string>{{/text}}</search-string>
-                <search-string>{{body}}</search-string>
-                <search-string>{{/body}}</search-string>
                 <search-string>{{head</search-string>
                 <search-string>{{milestone</search-string>
                 <search-string>{{lb</search-string>
             </search-table>
         </new-line-before>
-        <new-line-after>
-            <search-table>
-                <search-string>{{text}}</search-string>
-                <search-string>{{/body}}</search-string>
-            </search-table>
-        </new-line-after>
         <remove-blanks where="both"/>
         <insert-at-end>{{/body}}{{/text}}</insert-at-end>
     </transform>
