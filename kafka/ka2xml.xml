@@ -182,6 +182,20 @@
             <modify>
                 <exchange>
                     <exchange-table>
+                        <exception-string>{{head type="chapter"}}Im leeren Sitzungssaal</exception-string>
+                        <exception-string>{{head type="section"}}</exception-string>
+                        <string-pair>
+                            <search-string>{{head</search-string>
+                            <replacement-string>{{lb n="1"/}}{=1=}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
                         <!-- add p -->
                         <string-pair>
                             <search-string>{{head type="chapter"}}*{{/head}}</search-string>
@@ -197,7 +211,7 @@
         </pass>
         <new-line-before>
             <search-table>
-                <search-string>{{head</search-string>
+                <search-string>{{head type="section"}}</search-string>
                 <search-string>{{milestone</search-string>
                 <search-string>{{lb</search-string>
                 <search-string>{{pb</search-string>
