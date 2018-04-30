@@ -106,7 +106,7 @@
                         </string-pair>
                         <string-pair>
                             <search-string>{[}Der Student{]}</search-string>
-                            <replacement-string></replacement-string>
+                            <replacement-string/>
                         </string-pair>
                         <string-pair>
                             <search-string>{[}Fabrikant{]}</search-string>
@@ -234,6 +234,7 @@
             </search-table>
         </new-line-before>
         <remove-blanks where="both"/>
+        <suppress-blank-lines/>
         <insert-at-end>{{/body}}{{/text}}</insert-at-end>
     </transform>
     <transform source="ka" destination="ka-x"/>
