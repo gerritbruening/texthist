@@ -83,6 +83,10 @@
                             <search-string>PN={#}{\A}{\a}*{|}\R\I\D</search-string>
                             <replacement-string>{=2=}</replacement-string>
                         </string-pair>
+                        <string-pair>
+                            <search-string>PN={#}{\A}.*{|}\R\I\D</search-string>
+                            <replacement-string>{=2=}</replacement-string>
+                        </string-pair>
                     </exchange-table>
                 </exchange>
             </modify>
@@ -96,6 +100,18 @@
                             <replacement-string/>
                         </string-pair>
                         <!-- (depends on previous pass) -->
+                        <string-pair>
+                            <search-string>{[}{\A}{\a}**{|}\R\I\D</search-string>
+                            <replacement-string>{=2=}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{[}Der Student{]}</search-string>
+                            <replacement-string></replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{[}Fabrikant{]}</search-string>
+                            <replacement-string/>
+                        </string-pair>
                     </exchange-table>
                 </exchange>
             </modify>
