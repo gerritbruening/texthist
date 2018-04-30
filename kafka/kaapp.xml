@@ -71,27 +71,11 @@
                             <search-string>||</search-string>
                             <replacement-string>{{pb type="wit"/}}</replacement-string>
                         </string-pair>
-                    </exchange-table>
-                </exchange>
-            </modify>
-        </pass>
-        <pass>
-            <modify>
-                <exchange>
-                    <exchange-table>
                         <string-pair>
                             <search-string>|</search-string>
                             <replacement-string>{{lb type="wit"/}}</replacement-string>
                         </string-pair>
-                        <!-- (depends on previous pass) -->
                     </exchange-table>
-                </exchange>
-            </modify>
-        </pass>
-        <pass>
-            <modify>
-                <exchange>
-                    <exchange-table/>
                 </exchange>
             </modify>
         </pass>
@@ -101,7 +85,6 @@
                 <search-string>{{refLine</search-string>
             </search-table>
         </new-line-before>
-        <!--<output-records max-length="120"/>-->
     </transform>
     <transform source="kkapem" destination="kkapem-txt"/>
 </script>
