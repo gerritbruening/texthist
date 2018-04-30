@@ -89,10 +89,11 @@ This is processed to some kind of proto XML by [kaapp.xml](kaapp.xml):
 <refLine n="4-5"/> Zimmervermieterin,] Zimmervermieterin <lb type="wit"/>
 ```
 
-Characteristics:
-* `Emendiert nach Erstdruck` is misleading; it should be in italics but is not. Thus, it appears as if it was author's text.
+Characteristics of plain code:
+* `Emendiert nach Erstdruck` is misleading; it should be in italics but is not (in the plain code, unlike SGML!). Thus, it appears as if it was author's text.
 * `refPage/@n` and `refLine/@n` may be combined to proper references such as `<refLine n="7,1"/>`
 * some ranges such as `n="4-5"` have no direct correspondence in the text (see above) because there the hyphenation is dissolved, while the apparatus entries of the printed editions are preserved as they are.
+* `|` is for line break, `||` for page break in the manuscript (these are rendered in the apparatus entries when line or page breaks justify or explain editorial interventions).
 
 ### author's variants
 Before looking at the code, take a look on the original apparatus entry which covers for the variants in the autograph manuscript.
