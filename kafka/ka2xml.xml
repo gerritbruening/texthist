@@ -200,6 +200,7 @@
                 <search-string>{{head</search-string>
                 <search-string>{{milestone</search-string>
                 <search-string>{{lb</search-string>
+                <search-string>{{pb</search-string>
             </search-table>
         </new-line-before>
         <remove-blanks where="both"/>
