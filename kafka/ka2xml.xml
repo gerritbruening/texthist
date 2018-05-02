@@ -24,6 +24,10 @@
                 <exchange>
                     <exchange-table>
                         <string-pair>
+                            <search-string>NAME="*"</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
                             <search-string>SOMHEAD="*"</search-string>
                             <replacement-string/>
                         </string-pair>
@@ -71,46 +75,54 @@
                             <search-string>REF1={#}</search-string>
                             <replacement-string/>
                         </string-pair>
-                    </exchange-table>
-                </exchange>
-            </modify>
-        </pass>
-        <pass>
-            <modify>
-                <exchange>
-                    <exchange-table>
                         <string-pair>
-                            <search-string>PN={#}{\A}{\a}*{|}\R\I\D</search-string>
-                            <replacement-string>{=2=}</replacement-string>
-                        </string-pair>
-                        <string-pair>
-                            <search-string>PN={#}{\A}.*{|}\R\I\D</search-string>
-                            <replacement-string>{=2=}</replacement-string>
-                        </string-pair>
-                    </exchange-table>
-                </exchange>
-            </modify>
-        </pass>
-        <pass>
-            <modify>
-                <exchange>
-                    <exchange-table>
-                        <string-pair>
-                            <search-string>PN={#}{\A}{\a}*</search-string>
+                            <search-string>TITLE="*"</search-string>
                             <replacement-string/>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>PN=313{|}Fragmente{|}RID=00700501</search-string>
+                            <replacement-string>{{head type="section"}}{=2=}{{/head}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>PN={#}{|}{\A}{\a}*{|}RID={#}{\A}{\A}{#}</search-string>
+                            <replacement-string>{{head type="chapter"}}{=2=}{{/head}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>PN={#}{|}{\A}.*{|}RID={#}{\A}{\A}{#}</search-string>
+                            <replacement-string>{{head type="chapter"}}{=2=}{{/head}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>PN={#}{|}{\A}{\a}*</search-string>
+                            <replacement-string>{{head type="chapter"}}{=2=}{{lb/}}</replacement-string>
                         </string-pair>
                         <!-- (depends on previous pass) -->
                         <string-pair>
-                            <search-string>{[}{\A}{\a}**{|}\R\I\D</search-string>
-                            <replacement-string>{=2=}</replacement-string>
+                            <search-string>{[}{\A}{\a}**{|}RID={#}{\A}{\A}{#}</search-string>
+                            <replacement-string>{=1=}{{/head}}</replacement-string>
                         </string-pair>
                         <string-pair>
                             <search-string>{[}Der Student{]}</search-string>
-                            <replacement-string/>
+                            <replacement-string>{=1=}{{lb/}}</replacement-string>
                         </string-pair>
                         <string-pair>
                             <search-string>{[}Fabrikant{]}</search-string>
-                            <replacement-string/>
+                            <replacement-string>{=1=}{{lb/}}</replacement-string>
                         </string-pair>
                     </exchange-table>
                 </exchange>
@@ -181,23 +193,6 @@
             <modify>
                 <exchange>
                     <exchange-table>
-                        <!-- add head -->
-                        <string-pair>
-                            <search-string>NAME="{|}*{|}"</search-string>
-                            <replacement-string>{{head type="chapter"}}{=2=}{{/head}}</replacement-string>
-                        </string-pair>
-                        <string-pair>
-                            <search-string>TITLE="{|}*{|}"</search-string>
-                            <replacement-string>{{head type="section"}}{=2=}{{/head}}</replacement-string>
-                        </string-pair>
-                    </exchange-table>
-                </exchange>
-            </modify>
-        </pass>
-        <pass>
-            <modify>
-                <exchange>
-                    <exchange-table>
                         <exception-string>{{head type="chapter"}}Im leeren Sitzungssaal</exception-string>
                         <exception-string>{{head type="section"}}</exception-string>
                         <string-pair>
@@ -229,7 +224,7 @@
             <search-table>
                 <search-string>{{head type="section"}}</search-string>
                 <search-string>{{milestone</search-string>
-                <search-string>{{lb</search-string>
+                <search-string>{{lb n</search-string>
                 <search-string>{{pb</search-string>
             </search-table>
         </new-line-before>
