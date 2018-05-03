@@ -12,7 +12,7 @@
     </variables>
     <transform source="kkapem-t" destination="kkapem" mode="+">
         <!-- manually removed
-            N=131 IDPAGE=KKAPAppp131 PN=131TYPE=LES NAME="Editorische Eingriffe" SOM=STOP ID=00713101 SOMHEAD="Der Proceß [Apparat]: Editorische Eingriffe" SOMLEVEL=2 COMHEAD="Der Proceß (Apparatband): Editorische Eingriffe"PN=131Editorische EingriffeN=133 IDPAGE=KKAPAppp133 PN=133
+            N=131 IDPAGE=KKAPAppp131 PN=131TYPE=LES NAME="Editorische Eingriffe" SOM=STOP ID=00713101 SOMHEAD="Der Proceß [Apparat]: Editorische Eingriffe" SOMLEVEL=2 COMHEAD="Der Proceß (Apparatband): Editorische Eingriffe"PN=131Editorische Eingriffe
             -->
         <define-text-units>
             <text-unit-start>
@@ -53,9 +53,13 @@
                             <search-string>N={|}{#}{|} NAME="#\[2013\]"</search-string>
                             <replacement-string>{{refPage n="{=2=}"/}}</replacement-string>
                         </string-pair>
-                        <!-- app volume page: -->
                         <string-pair>
                             <search-string>PN={|}{#}{|}RIDPAGE=KKAPp{#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <!-- app volume page: -->
+                        <string-pair>
+                            <search-string>N={|}{#}{|} IDPAGE=KKAPAppp{#} PN={#}</search-string>
                             <replacement-string>{{pb ed="KKAP-App" n="{=2=}"/}}</replacement-string>
                         </string-pair>
                         <!-- add line ref: -->
@@ -81,6 +85,8 @@
         </pass>
         <new-line-before>
             <search-table>
+                <exception-string>{{pb type="wit"</exception-string>
+                <search-string>{{pb</search-string>
                 <search-string>{{refPage</search-string>
                 <search-string>{{refLine</search-string>
             </search-table>
