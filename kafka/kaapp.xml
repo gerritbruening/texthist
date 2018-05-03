@@ -91,6 +91,7 @@
                 <search-string>{{refLine</search-string>
             </search-table>
         </new-line-before>
+        <remove-blanks where="both"/>
     </transform>
     <transform source="kkapem" destination="kkapem-txt"/>
 </script>
