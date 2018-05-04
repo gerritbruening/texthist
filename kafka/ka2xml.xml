@@ -193,8 +193,15 @@
             <modify>
                 <exchange>
                     <exchange-table>
-                        <exception-string>{{head type="chapter"}}Im leeren Sitzungssaal</exception-string>
                         <exception-string>{{head type="section"}}</exception-string>
+                        <string-pair>
+                            <search-string>{{head type="chapter"}}Im leeren Sitzungssaal</search-string>
+                            <replacement-string>{{lb n="0"/}}{=1=}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{head type="chapter"}}B.'s</search-string>
+                            <replacement-string>{{lb n="0"/}}{=1=}</replacement-string>
+                        </string-pair>
                         <string-pair>
                             <search-string>{{head</search-string>
                             <replacement-string>{{lb n="1"/}}{=1=}</replacement-string>
