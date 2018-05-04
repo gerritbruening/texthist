@@ -18,6 +18,8 @@
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/t3.xml</variable>
         <variable type="permanent-file" format="tustep" option="erase" name="t1"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/t1.tf</variable>
+        <variable type="permanent-file" code="UTF-8" option="erase" name="t1-xml"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/turm1.xml</variable>
         <variable type="permanent-file" format="tustep" option="erase" name="t2"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/t2.tf</variable>
         <variable type="permanent-file" format="tustep" option="erase" name="t3"
@@ -141,6 +143,8 @@
             <modify>
                 <exchange>
                     <exchange-table>
+                        <exception-string>#.}}</exception-string>
+                        <exception-string>#.{{</exception-string>
                         <exception-string>{{{0}/hi}}</exception-string>
                         <exception-string>{{hi{00}{c:tg}}}</exception-string>
                         <string-pair>
@@ -189,6 +193,7 @@
                 <exception-string>{{hi+</exception-string>
                 <exception-string>{{speaker</exception-string>
                 <exception-string>{{stage+type="inline"</exception-string>
+                <exception-string>#.{{</exception-string>
                 <exception-string>{{/</exception-string>
                 <search-string>{{set}} {{p</search-string>
                 <search-string>{{stage+type="block"}} {{p</search-string>
@@ -200,6 +205,45 @@
     <transform source="intmedfile2" destination="t1">
         <output-records max-length="120"/>
         <!--when necessary-->
+    </transform>
+    <transform source="t1" destination="t1-xml">
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <exception-string>#.{{</exception-string>
+                        <string-pair>
+                            <search-string>+</search-string>
+                            <replacement-string> </replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>type="*"</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>{{{00}{&amp;a}{0} }}{[}{00} </search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>"}}{[} </search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string> {]}{{/</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
     </transform>
     <transform source="t2-x" destination="intmedfile" take-params="ko1" option="erase"/>
     <transform source="intmedfile" destination="t2" take-params="ko2" mode="+"/>
@@ -230,5 +274,5 @@
     <collate source="t1" mode="single-witness" diff-file="diff1'diff2" listing="$diff-list">
         <list lines="all"/>
     </collate>
-    <display file="diff-list" type="listing" mode="ps-landscape"/>
+    <!--<display file="diff-list" type="listing" mode="ps-landscape"/>-->
 </script>
