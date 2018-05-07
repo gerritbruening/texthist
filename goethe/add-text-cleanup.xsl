@@ -10,9 +10,18 @@
 	<xsl:template match="seg"/>
 	<xsl:template
 		match="
-			*/@f:schroer | */@f:act | */@f:label | */@f:first-verse | */@f:last-verse |
-			*/@f:section | */@f:verse-range | */@f:scene"/>
-	<xsl:template match="hi/@status | pb | lg/@type"/>
+			*/@f:schroer
+			| */@f:act 
+			| */@f:label 
+			| */@f:first-verse 
+			| */@f:last-verse 
+			| */@f:section 
+			| */@f:verse-range 
+			| */@f:scene
+			| hi/@status 
+			| pb 
+			| lg/@type
+			| head[not(normalize-space(.))]"/>
 
 	<xsl:template match="node() | @*" mode="#all">
 		<xsl:copy copy-namespaces="no">
