@@ -3,7 +3,8 @@
     <variables>
         <char-group name="pc">,;.:!\?</char-group>
         <!-- sources -->
-        <variable type="execution-file" name="execute">file:///C:/Users/bruening.FDH-FFM/txstep/ueb/txstep.tu</variable>
+        <variable type="execution-file" name="execute"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/ueb/txstep.tu</variable>
         <variable type="permanent-file" name="dta-x" code="utf8"
             >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/dta/kafka_prozess_1925.TEI-P5.xml</variable>
         <variable type="permanent-file" name="zeno-h" code="utf8"
@@ -334,7 +335,8 @@
         <pos-ind-b value="yes"/>
         <version-id>Fi Bü</version-id>
     </compare>
-    <compare versiona="$dta-t" versionb="$kproj-t" variants="$diff3" type="corrections" listing="-">
+    <compare versiona="$dta-t" versionb="$kproj-t" variants="$diff3" type="corrections"
+        listing="-">
         <compare-units mode="word"/>
         <!-- 1.-3. Kap. 1925 -->
         <select-area versiona="0.229-1.803/61,99" versionb="0.8-1.369/84,99"/>
@@ -360,7 +362,8 @@
             <insertion length-before="1" length-after="0"/>
         </add-context>
     </compare>
-    <compare versiona="$dta-t" versionb="$lt-t" variants="$diff5" type="corrections" listing="-">
+    <compare versiona="$dta-t" versionb="$lt-t" variants="$diff5" type="corrections"
+        listing="-">
         <compare-units mode="word"/>
         <select-area versiona="0.235-0.357/08,10" versionb="0.18-0.94/43,7"/>
         <locations abbreviate="no" word-number="always"/>
@@ -371,9 +374,9 @@
         </add-context>
         <pos-ind-b value="yes"/>
         <version-id>Krause</version-id>
-    </compare>    
-    <collate source="$dta-t" mode="single-witness" diff-file="$diff1'$diff2'$diff3'$diff5" listing="$diff-listing"
-        special="code">
+    </compare>
+    <collate source="$dta-t" mode="single-witness" diff-file="$diff1'$diff2'$diff3'$diff5"
+        listing="$diff-listing" special="code">
         <list lines="all"/>
         <var-marks id-text="=" missing-text=" " id-var="id-prev"/>
     </collate>
