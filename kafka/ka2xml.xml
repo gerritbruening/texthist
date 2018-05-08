@@ -227,8 +227,60 @@
                 </exchange>
             </modify>
         </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>{{lb n="{#}"/}}{{head type="chapter"}}{|}*{|}{{</search-string>
+                            <replacement-string>{{anchor xml:id="{=2-}"/}}{=1=}{=2=}{=3=}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange-from>
+                    <search-table>
+                        <search-string>{{anchor xml:id="</search-string>
+                    </search-table>
+                </exchange-from>
+                <exchange-to>
+                    <search-table>
+                        <search-string>{&amp;a}{&amp;a}"/}}</search-string>
+                    </search-table>
+                </exchange-to>
+                <exchange>
+                    <exchange-table>
+                        <exception-string>{{anchor xml:id="</exception-string>
+                        <string-pair>
+                            <search-string>.'</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string> </search-string>
+                            <replacement-string>^_</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\ä</search-string>
+                            <replacement-string>ae</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\ö</search-string>
+                            <replacement-string>oe</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\ü</search-string>
+                            <replacement-string>ue</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
         <new-line-before>
             <search-table>
+                <search-string>{{anchor</search-string>
                 <search-string>{{head type="section"}}</search-string>
                 <search-string>{{milestone</search-string>
                 <search-string>{{lb n</search-string>
