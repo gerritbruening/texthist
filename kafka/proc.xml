@@ -3,44 +3,44 @@
     <variables>
         <char-group name="pc">,;.:!\?</char-group>
         <!-- sources -->
-        <variable type="execution-file" name="execute">file:///C:/Users/Gerrit/txstep/ueb/txstep.tu</variable>
+        <variable type="execution-file" name="execute">file:///C:/Users/bruening.FDH-FFM/txstep/ueb/txstep.tu</variable>
         <variable type="permanent-file" name="dta-x" code="utf8"
-            >file:///C:/Users/Gerrit/txstep/txt/process_dtaq.xml</variable>
+            >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/dta/kafka_prozess_1925.TEI-P5.xml</variable>
         <variable type="permanent-file" name="zeno-h" code="utf8"
-            >file:///C:/Users/Gerrit/txstep/txt/proc_zeno.html</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proc_zeno.html</variable>
         <variable type="permanent-file" name="gutenb-h" code="utf8"
-            >file:///C:/Users/Gerrit/txstep/txt/proc_gutenb.html</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proc_gutenb.html</variable>
         <variable type="permanent-file" name="kproj-h" code="utf8"
-            >file:///C:/Users/Gerrit/txstep/txt/proc_kproject.xml</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proc_kproject.xml</variable>
         <variable type="permanent-file" name="lt-x" code="utf8"
-            >file:///C:/Users/Gerrit/txstep/txt/process-lt.xml</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/process-lt.xml</variable>
         <!-- par ko -->
         <variable type="scratch-file" name="par"/>
         <!-- tf -->
         <variable type="permanent-file" name="dta-t" format="tustep" option="erase"
-            >file:///C:/Users/Gerrit/txstep/txt/process_dtaq.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/process_dtaq.tf</variable>
         <variable type="permanent-file" name="zeno-t" format="tustep" option="erase"
-            >file:///C:/Users/Gerrit/txstep/txt/zeno.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/zeno.tf</variable>
         <variable type="permanent-file" name="gutenb-t" format="tustep" option="erase"
-            >file:///C:/Users/Gerrit/txstep/txt/gutenb.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/gutenb.tf</variable>
         <variable type="permanent-file" name="kproj-t" format="tustep" option="erase"
-            >file:///C:/Users/Gerrit/txstep/txt/kproject.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kproject.tf</variable>
         <variable type="permanent-file" name="lt-t" format="tustep" option="erase"
-            >file:///C:/Users/Gerrit/txstep/txt/lt.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/lt.tf</variable>
         <!-- ve -->
         <variable type="permanent-file" name="diff1" option="erase" format="tustep"
-            >file:///C:/Users/Gerrit/txstep/ve/diff1.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff1.tf</variable>
         <variable type="permanent-file" name="diff2" option="erase" format="tustep"
-            >file:///C:/Users/Gerrit/txstep/ve/diff2.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff2.tf</variable>
         <variable type="permanent-file" name="diff3" option="erase" format="tustep"
-            >file:///C:/Users/Gerrit/txstep/ve/diff3.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff3.tf</variable>
         <variable type="permanent-file" name="diff4" option="erase" format="tustep"
-            >file:///C:/Users/Gerrit/txstep/ve/diff4.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff4.tf</variable>
         <variable type="permanent-file" name="diff5" option="erase" format="tustep"
-            >file:///C:/Users/Gerrit/txstep/ve/diff5.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff5.tf</variable>
         <!-- va -->
         <variable type="permanent-file" name="diff-listing" option="erase" format="tustep"
-            >file:///C:/Users/Gerrit/txstep/va/diff.list</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/va/diff.list</variable>
     </variables>
     <transform source="$dta-x" destination="$dta-t" save-params="$par">
         <define-text-units>
