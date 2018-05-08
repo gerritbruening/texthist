@@ -5,33 +5,37 @@
         <!-- sources -->
         <variable type="execution-file" name="execute"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ueb/txstep.tu</variable>
+        <variable type="permanent-file" name="kkap" format="tustep"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/ka.tf</variable>
         <variable type="permanent-file" name="dta-x" code="utf8"
             >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/dta/kafka_prozess_1925.TEI-P5.xml</variable>
-        <variable type="permanent-file" name="zeno-h" code="utf8"
+        <!--<variable type="permanent-file" name="zeno-h" code="utf8"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proc_zeno.html</variable>
         <variable type="permanent-file" name="gutenb-h" code="utf8"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proc_gutenb.html</variable>
         <variable type="permanent-file" name="kproj-h" code="utf8"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proc_kproject.xml</variable>
         <variable type="permanent-file" name="lt-x" code="utf8"
-            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/process-lt.xml</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/process-lt.xml</variable>-->
         <!-- par ko -->
         <variable type="scratch-file" name="par"/>
         <!-- tf -->
+        <variable type="permanent-file" name="kkap-c" format="tustep" option="erase"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kkap-c.tf</variable>
         <variable type="permanent-file" name="dta-t" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/process_dtaq.tf</variable>
-        <variable type="permanent-file" name="zeno-t" format="tustep" option="erase"
+        <!--<variable type="permanent-file" name="zeno-t" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/zeno.tf</variable>
         <variable type="permanent-file" name="gutenb-t" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/gutenb.tf</variable>
         <variable type="permanent-file" name="kproj-t" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kproject.tf</variable>
         <variable type="permanent-file" name="lt-t" format="tustep" option="erase"
-            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/lt.tf</variable>
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/lt.tf</variable>-->
         <!-- ve -->
         <variable type="permanent-file" name="diff1" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff1.tf</variable>
-        <variable type="permanent-file" name="diff2" option="erase" format="tustep"
+<!--        <variable type="permanent-file" name="diff2" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff2.tf</variable>
         <variable type="permanent-file" name="diff3" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff3.tf</variable>
@@ -39,10 +43,54 @@
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff4.tf</variable>
         <variable type="permanent-file" name="diff5" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff5.tf</variable>
-        <!-- va -->
+-->        <!-- va -->
         <variable type="permanent-file" name="diff-listing" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/va/diff.list</variable>
     </variables>
+    <transform source="kkap" destination="kkap-c">
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>{{anchor */}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{pb */}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{lb */}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>#\[2014\]</search-string>
+                            <replacement-string>--</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>}}</search-string>
+                            <replacement-string>}} </replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{/</search-string>
+                            <replacement-string> {{/</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <remove-blanks where="both"/>
+        <suppress-blank-lines/>
+    </transform>
     <transform source="$dta-x" destination="$dta-t" save-params="$par">
         <define-text-units>
             <text-unit-start>
@@ -56,10 +104,6 @@
             <modify>
                 <exchange>
                     <exchange-table>
-                        <string-pair>
-                            <search-string>{{pb facs="^#f{#}" n="{#}"{0} /}}</search-string>
-                            <replacement-string/>
-                        </string-pair>
                         <string-pair>
                             <search-string>^&amp;^#x201E;</search-string>
                             <replacement-string>"</replacement-string>
@@ -88,6 +132,10 @@
                             <search-string>}}</search-string>
                             <replacement-string>}} </replacement-string>
                         </string-pair>
+                        <string-pair>
+                            <search-string>{{/</search-string>
+                            <replacement-string> {{/</replacement-string>
+                        </string-pair>
                     </exchange-table>
                 </exchange>
             </modify>
@@ -96,7 +144,7 @@
         <suppress-blank-lines/>
         <output-records max-length="120"/>
     </transform>
-    <transform source="$zeno-h" destination="$zeno-t">
+    <!--<transform source="$zeno-h" destination="$zeno-t">
         <define-text-units>
             <text-unit-start>
                 <comparison-table>
@@ -131,7 +179,7 @@
                         </string-pair>
                         <string-pair>
                             <search-string>#\[2013\]</search-string>
-                            <replacement-string>--</replacement-string>
+                            <replacement-string>-\-</replacement-string>
                         </string-pair>
                     </exchange-table>
                 </exchange>
@@ -152,8 +200,8 @@
         <remove-blanks where="both"/>
         <suppress-blank-lines/>
         <output-records max-length="120"/>
-    </transform>
-    <transform source="$gutenb-h" destination="$gutenb-t">
+    </transform>-->
+    <!--<transform source="$gutenb-h" destination="$gutenb-t">
         <define-text-units>
             <text-unit-start>
                 <comparison-table>
@@ -172,7 +220,7 @@
                         </string-pair>
                         <string-pair>
                             <search-string>^&amp;nbsp;{[}-{]}{c:pc}</search-string>
-                            <replacement-string>--</replacement-string>
+                            <replacement-string>-\-</replacement-string>
                         </string-pair>
                         <string-pair>
                             <search-string>#.}}</search-string>
@@ -184,7 +232,7 @@
                         </string-pair>
                         <string-pair>
                             <search-string>#\[2013\]</search-string>
-                            <replacement-string>--</replacement-string>
+                            <replacement-string>-\-</replacement-string>
                         </string-pair>
                     </exchange-table>
                 </exchange>
@@ -205,8 +253,8 @@
         <remove-blanks where="both"/>
         <suppress-blank-lines/>
         <output-records max-length="120"/>
-    </transform>
-    <transform source="$kproj-h" destination="$kproj-t">
+    </transform>-->
+    <!--<transform source="$kproj-h" destination="$kproj-t">
         <define-text-units>
             <text-unit-start>
                 <comparison-table>
@@ -221,7 +269,7 @@
                     <exchange-table>
                         <string-pair>
                             <search-string>#\[0096\]</search-string>
-                            <replacement-string>--</replacement-string>
+                            <replacement-string>-\-</replacement-string>
                         </string-pair>
                         <string-pair>
                             <search-string>#\[0092\]</search-string>
@@ -231,11 +279,11 @@
                             <search-string>.{[} {]}" "{&amp;a}</search-string>
                             <replacement-string/>
                         </string-pair>
-                        <!--<string-pair>
+                        <!-\-<string-pair>
                             <search-string>.{[} {]}" {&amp;a}</search-string>
                             <replacement-string/>
-                        </string-pair>-->
-                        <!-- führt leider auch zu falschen Ersetzungen -->
+                        </string-pair>-\->
+                        <!-\- führt leider auch zu falschen Ersetzungen -\->
                     </exchange-table>
                 </exchange>
             </modify>
@@ -255,8 +303,8 @@
         <remove-blanks where="both"/>
         <suppress-blank-lines/>
         <output-records max-length="120"/>
-    </transform>
-    <transform source="$lt-x" destination="$lt-t">
+    </transform>-->
+    <!--<transform source="$lt-x" destination="$lt-t">
         <define-text-units>
             <text-unit-start>
                 <comparison-table>
@@ -271,7 +319,7 @@
                     <exchange-table>
                         <string-pair>
                             <search-string>#\[0096\]</search-string>
-                            <replacement-string>--</replacement-string>
+                            <replacement-string>-\-</replacement-string>
                         </string-pair>
                         <string-pair>
                             <search-string>#\[0092\]</search-string>
@@ -279,7 +327,7 @@
                         </string-pair>
                         <string-pair>
                             <search-string>#\[2013\]</search-string>
-                            <replacement-string>--</replacement-string>
+                            <replacement-string>-\-</replacement-string>
                         </string-pair>
                         <string-pair>
                             <search-string>#.,</search-string>
@@ -312,8 +360,20 @@
         <remove-blanks where="both"/>
         <suppress-blank-lines/>
         <output-records max-length="120"/>
-    </transform>
-    <compare versiona="$dta-t" versionb="$zeno-t" variants="$diff1" listing="-">
+    </transform>-->
+    <compare versiona="kkap-c" versionb="dta-t" variants="diff1" listing="-" type="corrections">
+        <compare-units mode="word"/>
+        <locations abbreviate="no" word-number="always"/>
+        <add-context>
+            <omission length-before="0" length-lemma="5" length-after="0"/>
+            <replacement length-before="0" length-lemma="5" length-after="0"/>
+            <insertion length-before="1" length-after="0"/>
+        </add-context>
+        <pos-ind-b value="yes"/>
+        <version-id>EA</version-id>
+        <select-area versiona="1.4-143.45" versionb="0.239-6.631/03,11"/>
+    </compare>
+    <!--<compare versiona="$dta-t" versionb="$zeno-t" variants="$diff1" listing="-">
         <compare-units mode="word"/>
         <locations abbreviate="no" word-number="always"/>
         <add-context>
@@ -323,8 +383,8 @@
         </add-context>
         <pos-ind-b value="yes"/>
         <version-id>GW</version-id>
-    </compare>
-    <compare versiona="$dta-t" versionb="$gutenb-t" variants="$diff2" listing="-">
+    </compare>-->
+    <!--<compare versiona="$dta-t" versionb="$gutenb-t" variants="$diff2" listing="-">
         <compare-units mode="word"/>
         <locations abbreviate="no" word-number="always"/>
         <add-context>
@@ -334,17 +394,17 @@
         </add-context>
         <pos-ind-b value="yes"/>
         <version-id>Fi Bü</version-id>
-    </compare>
-    <compare versiona="$dta-t" versionb="$kproj-t" variants="$diff3" type="corrections"
+    </compare>-->
+    <!--<compare versiona="$dta-t" versionb="$kproj-t" variants="$diff3" type="corrections"
         listing="-">
         <compare-units mode="word"/>
-        <!-- 1.-3. Kap. 1925 -->
+        <!-\- 1.-3. Kap. 1925 -\->
         <select-area versiona="0.229-1.803/61,99" versionb="0.8-1.369/84,99"/>
-        <!-- 4. Kap. Freundin des Frl. Bürstner, in KProj als erstes Anhang-Kap. -->
+        <!-\- 4. Kap. Freundin des Frl. Bürstner, in KProj als erstes Anhang-Kap. -\->
         <select-area versiona="1.868-2.46/07,99" versionb="4.305-4.398/73,99"/>
-        <!-- 5. Kap. Prügler bis Schluss -->
+        <!-\- 5. Kap. Prügler bis Schluss -\->
         <select-area versiona="2.56-5.348/03,11" versionb="1.448-4.298/03,99"/>
-        <!-- normalize? -->
+        <!-\- normalize? -\->
         <locations abbreviate="no" word-number="always"/>
         <add-context>
             <omission length-before="0" length-lemma="5" length-after="0"/>
@@ -353,16 +413,16 @@
         </add-context>
         <pos-ind-b value="yes"/>
         <version-id>KKA</version-id>
-    </compare>
-    <compare versiona="$zeno-t" versionb="$gutenb-t" variants="$diff4" listing="-">
+    </compare>-->
+    <!--<compare versiona="$zeno-t" versionb="$gutenb-t" variants="$diff4" listing="-">
         <compare-units mode="word"/>
         <add-context>
             <omission length-before="0" length-lemma="5" length-after="0"/>
             <replacement length-before="0" length-lemma="5" length-after="0"/>
             <insertion length-before="1" length-after="0"/>
         </add-context>
-    </compare>
-    <compare versiona="$dta-t" versionb="$lt-t" variants="$diff5" type="corrections"
+    </compare>-->
+    <!--<compare versiona="$dta-t" versionb="$lt-t" variants="$diff5" type="corrections"
         listing="-">
         <compare-units mode="word"/>
         <select-area versiona="0.235-0.357/08,10" versionb="0.18-0.94/43,7"/>
@@ -374,8 +434,8 @@
         </add-context>
         <pos-ind-b value="yes"/>
         <version-id>Krause</version-id>
-    </compare>
-    <collate source="$dta-t" mode="single-witness" diff-file="$diff1'$diff2'$diff3'$diff5"
+    </compare>-->
+    <collate source="kkap-c" mode="single-witness" diff-file="diff1"
         listing="$diff-listing" special="code">
         <list lines="all"/>
         <var-marks id-text="=" missing-text=" " id-var="id-prev"/>
