@@ -494,5 +494,38 @@
                 </exchange>
             </modify>
         </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <exception-string>{\A}{\A}{\A}</exception-string>
+                        <string-pair>
+                            <search-string>\Ä</search-string>
+                            <replacement-string>Ae</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\Ö</search-string>
+                            <replacement-string>Oe</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\Ü</search-string>
+                            <replacement-string>Ue</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>ä</search-string>
+                            <replacement-string>ae</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>ö</search-string>
+                            <replacement-string>oe</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>ü</search-string>
+                            <replacement-string>ue</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
     </transform>
 </script>
