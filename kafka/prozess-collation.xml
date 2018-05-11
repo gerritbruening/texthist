@@ -478,16 +478,16 @@
                         <!-- replacement -->
                         <string-pair>
                             <search-string>*(EA)\[{|}*{|}\]{{*}}={|}*</search-string>
-                            <replacement-string>\[-{=2=}-\] \{+{=4=}+\}</replacement-string>
+                            <replacement-string>PSEUDOTEXT \[-{=2=}-\] \{+{=4=}+\} PSEUDOTEXT</replacement-string>
                         </string-pair>
                         <!-- addition -->
                         <string-pair>
                             <search-string>*(EA)\[* :: \]{{*}}+{|}*</search-string>
-                            <replacement-string>\{+{=2=}+\}</replacement-string>
+                            <replacement-string>PSEUDOTEXT \{+{=2=}+\} PSEUDOTEXT</replacement-string>
                         </string-pair>
                         <!-- deletion -->
                         <string-pair>
-                            <search-string>*(EA)\[{|}*{|}\]{{*}}-{]}</search-string>
+                            <search-string>*(EA)PSEUDOTEXT \[{|}*{|}\]{{*}}-{]} PSEUDOTEXT</search-string>
                             <replacement-string>\{-{=2=}-\}</replacement-string>
                         </string-pair>
                     </exchange-table>
