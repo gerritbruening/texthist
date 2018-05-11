@@ -8,7 +8,7 @@
         <variable type="permanent-file" name="kkap" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/ka.tf</variable>
         <variable type="permanent-file" name="dta-x" code="utf8"
-            >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/dta/kafka_prozess_1925.TEI-P5.xml</variable>
+            >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/dta/prozess_dta.xml</variable>
         <!--<variable type="permanent-file" name="zeno-h" code="utf8"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proc_zeno.html</variable>
         <variable type="permanent-file" name="gutenb-h" code="utf8"
@@ -35,7 +35,7 @@
         <!-- ve -->
         <variable type="permanent-file" name="diff1" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff1.tf</variable>
-<!--        <variable type="permanent-file" name="diff2" option="erase" format="tustep"
+        <!--        <variable type="permanent-file" name="diff2" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff2.tf</variable>
         <variable type="permanent-file" name="diff3" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff3.tf</variable>
@@ -43,7 +43,8 @@
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff4.tf</variable>
         <variable type="permanent-file" name="diff5" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff5.tf</variable>
--->        <!-- va -->
+-->
+        <!-- va -->
         <variable type="permanent-file" name="diff-listing" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/va/diff.list</variable>
     </variables>
@@ -91,7 +92,7 @@
         <remove-blanks where="both"/>
         <suppress-blank-lines/>
     </transform>
-    <transform source="$dta-x" destination="$dta-t" save-params="$par">
+    <transform source="$dta-x" destination="$dta-t" save-params="$par" mode="+">
         <define-text-units>
             <text-unit-start>
                 <comparison-table>
@@ -105,19 +106,35 @@
                 <exchange>
                     <exchange-table>
                         <string-pair>
-                            <search-string>^&amp;^#x201E;</search-string>
+                            <search-string>{{\?*\?}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{{0}/TEI*}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{anchor */}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{milestone unit="div"/}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>#.,</search-string>
                             <replacement-string>"</replacement-string>
                         </string-pair>
                         <string-pair>
-                            <search-string>^&amp;^#x201C;</search-string>
+                            <search-string>#.'</search-string>
                             <replacement-string>"</replacement-string>
                         </string-pair>
                         <string-pair>
-                            <search-string>^&amp;^#x2013;</search-string>
+                            <search-string>#\[2013\]</search-string>
                             <replacement-string>--</replacement-string>
                         </string-pair>
                         <string-pair>
-                            <search-string>^&amp;^#x2019;</search-string>
+                            <search-string>#\[2019\]</search-string>
                             <replacement-string>'</replacement-string>
                         </string-pair>
                     </exchange-table>
@@ -435,10 +452,10 @@
         <pos-ind-b value="yes"/>
         <version-id>Krause</version-id>
     </compare>-->
-    <collate source="kkap-c" mode="single-witness" diff-file="diff1"
-        listing="$diff-listing" special="code">
+    <collate source="kkap-c" mode="single-witness" diff-file="diff1" listing="$diff-listing"
+        special="code">
         <list lines="all"/>
         <var-marks id-text="=" missing-text=" " id-var="id-prev"/>
     </collate>
-    <display file="$diff-listing" type="listing" mode="ps-landscape"/>
+    <!--<display file="$diff-listing" type="listing" mode="ps-landscape"/>-->
 </script>
