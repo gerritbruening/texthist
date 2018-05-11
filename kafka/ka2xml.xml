@@ -334,6 +334,7 @@
         </pass>
         <new-line-before>
             <search-table>
+                <search-string>{{body}}</search-string>
                 <search-string>{{anchor</search-string>
                 <search-string>{{head type="section"}}</search-string>
                 <search-string>{{milestone</search-string>
