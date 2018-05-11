@@ -523,6 +523,10 @@
                             <search-string>ü</search-string>
                             <replacement-string>ue</replacement-string>
                         </string-pair>
+                        <string-pair>
+                            <search-string>ß</search-string>
+                            <replacement-string>sz</replacement-string>
+                        </string-pair>
                     </exchange-table>
                 </exchange>
             </modify>
