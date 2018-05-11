@@ -50,8 +50,8 @@
         <variable type="permanent-file" name="diff-listing" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/va/diff.list</variable>
         <!-- txt -->
-        <variable type="permanent-file" name="wdiff" code="utf8" option="erase"
-            >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/wdiff.txt</variable>
+        <variable type="permanent-file" name="kafka-wdiff" code="utf8" option="erase"
+            >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/kafka-wdiff.txt</variable>
     </variables>
     <transform source="kkap" destination="kkap-c">
         <pass>
@@ -470,7 +470,7 @@
     </collate>
     <!--<display file="$diff-listing" type="listing" mode="ps-landscape"/>-->
     <!-- diffs to wdiff -->
-    <transform source="diff1" destination="wdiff">
+    <transform source="diff1" destination="kafka-wdiff">
         <pass>
             <modify>
                 <exchange>
