@@ -9,6 +9,8 @@
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/intmedfile.tf</variable>
         <variable type="permanent-file" name="ka" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/ka.tf</variable>
+        <variable type="permanent-file" name="kalines-x" code="utf8" option="erase"
+            >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/kka/kkap-lines.xml</variable>
         <variable type="permanent-file" name="ka-x" code="utf8" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/kka/kkap.xml</variable>
     </variables>
@@ -340,10 +342,25 @@
                 <search-string>{{milestone</search-string>
                 <search-string>{{lb n</search-string>
                 <search-string>{{pb</search-string>
+                <search-string>{{/p}}</search-string>
             </search-table>
         </new-line-before>
         <remove-blanks where="both"/>
         <suppress-blank-lines/>
+    </transform>
+    <transform source="ka" destination="kalines-x">
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>{{lb n="{|}{#}{|}"/}}{|}*</search-string>
+                            <replacement-string>{{kaLine n="{=2=}"}}{=4=}{{/kaLine}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
     </transform>
     <transform source="ka" destination="ka-x"/>
 </script>
