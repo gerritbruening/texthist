@@ -41,6 +41,10 @@
                             <search-string>ALIGN=LEFT</search-string>
                             <replacement-string/>
                         </string-pair>
+                        <string-pair>
+                            <search-string>{{no_lf/}} </search-string>
+                            <replacement-string/>
+                        </string-pair>
                     </exchange-table>
                 </exchange>
             </modify>
