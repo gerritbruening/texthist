@@ -5,6 +5,8 @@
             >file:///C:/Users/bruening.FDH-FFM/txstep/ueb/txstep.tu</variable>
         <variable type="permanent-file" name="kkapem-t" code="utf8"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proz_app-emend.txt</variable>
+        <variable type="permanent-file" format="tustep" option="erase" name="intmedfile"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/intmedfile.tf</variable>
         <variable type="permanent-file" name="kkapem" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kkap_emend.tf</variable>
         <variable type="permanent-file" name="kkapem-txt" code="utf8" option="erase"
@@ -12,7 +14,7 @@
         <variable type="permanent-file" name="kkap-em-line" code="utf8" option="erase"
             >file:///C:/Users/bruening.FDH-FFM//github/gerritbruening/texthist-data/kafka/kka/kkap-emend-lines.xml</variable>
     </variables>
-    <transform source="kkapem-t" destination="kkapem" mode="+">
+    <transform source="kkapem-t" destination="intmedfile" mode="+">
         <!-- manually removed
             N=131 IDPAGE=KKAPAppp131 PN=131TYPE=LES NAME="Editorische Eingriffe" SOM=STOP ID=00713101 SOMHEAD="Der Proceß [Apparat]: Editorische Eingriffe" SOMLEVEL=2 COMHEAD="Der Proceß (Apparatband): Editorische Eingriffe"PN=131Editorische Eingriffe
             -->
@@ -100,6 +102,21 @@
         </new-line-before>
         <remove-blanks where="both"/>
         <insert-at-end>{{/apparatus}}</insert-at-end>
+    </transform>
+    <transform source="intmedfile" destination="kkapem">
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>\A{]}</search-string>
+                            <!-- {&amp;a}{[} -->
+                            <replacement-string>{{Ansatz/}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
     </transform>
     <transform source="kkapem" destination="kkapem-txt"/>
     <transform source="kkapem" destination="kkap-em-line">
