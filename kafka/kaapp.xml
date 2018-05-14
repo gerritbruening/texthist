@@ -7,13 +7,14 @@
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/proz_app-emend.txt</variable>
         <variable type="permanent-file" name="kkapem" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kkap_emend.tf</variable>
-        <variable type="permanent-file" name="kkapem-txt" code="utf8" option="erase"
-            >file:///C:/Users/bruening.FDH-FFM//github/gerritbruening/texthist-data/kafka/kka/kkap_emend.txt</variable>
+        <variable type="permanent-file" name="kkapem-x" code="utf8" option="erase"
+            >file:///C:/Users/bruening.FDH-FFM//github/gerritbruening/texthist-data/kafka/kka/kkap_emend.xml</variable>
     </variables>
     <transform source="kkapem-t" destination="kkapem" mode="+">
         <!-- manually removed
             N=131 IDPAGE=KKAPAppp131 PN=131TYPE=LES NAME="Editorische Eingriffe" SOM=STOP ID=00713101 SOMHEAD="Der Proceß [Apparat]: Editorische Eingriffe" SOMLEVEL=2 COMHEAD="Der Proceß (Apparatband): Editorische Eingriffe"PN=131Editorische Eingriffe
             -->
+        <insert-at-start>{{listApp}}</insert-at-start>
         <define-text-units>
             <text-unit-start>
                 <comparison-table>
@@ -92,6 +93,7 @@
             </search-table>
         </new-line-before>
         <remove-blanks where="both"/>
+        <insert-at-end>{{/listApp}}</insert-at-end>
     </transform>
-    <transform source="kkapem" destination="kkapem-txt"/>
+    <transform source="kkapem" destination="kkapem-x"/>
 </script>
