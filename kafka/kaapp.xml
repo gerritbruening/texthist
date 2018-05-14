@@ -9,14 +9,14 @@
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kkap_emend.tf</variable>
         <variable type="permanent-file" name="kkapem-txt" code="utf8" option="erase"
             >file:///C:/Users/bruening.FDH-FFM//github/gerritbruening/texthist-data/kafka/kka/kkap_emend.txt</variable>
-        <variable type="permanent-file" name="kkap-emend-x" code="utf8" option="erase"
-            >file:///C:/Users/bruening.FDH-FFM//github/gerritbruening/texthist-data/kafka/kka/kkap_emend.xml</variable>
+        <variable type="permanent-file" name="kkap-em-line" code="utf8" option="erase"
+            >file:///C:/Users/bruening.FDH-FFM//github/gerritbruening/texthist-data/kafka/kka/kkap-emend-lines.xml</variable>
     </variables>
     <transform source="kkapem-t" destination="kkapem" mode="+">
         <!-- manually removed
             N=131 IDPAGE=KKAPAppp131 PN=131TYPE=LES NAME="Editorische Eingriffe" SOM=STOP ID=00713101 SOMHEAD="Der Proceß [Apparat]: Editorische Eingriffe" SOMLEVEL=2 COMHEAD="Der Proceß (Apparatband): Editorische Eingriffe"PN=131Editorische Eingriffe
             -->
-        <insert-at-start>{{listApp}}</insert-at-start>
+        <insert-at-start>{{f:apparatus xmlns:f="http://www.faustedition.net/ns" xmlns="http://www.tei-c.org/ns/1.0"}}</insert-at-start>
         <define-text-units>
             <text-unit-start>
                 <comparison-table>
@@ -99,8 +99,33 @@
             </search-table>
         </new-line-before>
         <remove-blanks where="both"/>
-        <insert-at-end>{{/listApp}}</insert-at-end>
+        <insert-at-end>{{/f:apparatus}}</insert-at-end>
     </transform>
     <transform source="kkapem" destination="kkapem-txt"/>
-    <transform source="kkapem" destination="kkap-emend-x"/>
+    <transform source="kkapem" destination="kkap-em-line">
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>{{refLine n="{#}"{|}/}}{|}*</search-string>
+                            <replacement-string>{=1=}}}{=3=}{{/refLine}}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>refLine n="{#}{[}-{#}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+    </transform>
 </script>
