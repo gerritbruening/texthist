@@ -7,6 +7,8 @@
             >file:///C:/Users/bruening.FDH-FFM/txstep/ueb/txstep.tu</variable>
         <variable type="permanent-file" format="tustep" option="erase" name="intmedfile"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/intmedfile.tf</variable>
+        <variable type="permanent-file" name="kkap-unem-x" code="utf8"
+            >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/kka/kkap-unemended.xml</variable>
         <variable type="permanent-file" name="kkap" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/ka.tf</variable>
         <variable type="permanent-file" name="dta-x" code="utf8"
@@ -20,8 +22,11 @@
         <variable type="permanent-file" name="lt-x" code="utf8"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/process-lt.xml</variable>-->
         <!-- par ko -->
+        <variable type="scratch-file" name="par-kkap"/>
         <variable type="scratch-file" name="par"/>
         <!-- tf -->
+        <variable type="permanent-file" name="kkap-unem" format="tustep" option="erase"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kaap-unem.tf</variable>
         <variable type="permanent-file" name="kkap-c" format="tustep" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/txstep/txt/kkap-c.tf</variable>
         <variable type="permanent-file" name="dta-t" format="tustep" option="erase"
@@ -37,6 +42,8 @@
         <!-- ve -->
         <variable type="permanent-file" name="diff1" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff1.tf</variable>
+        <variable type="permanent-file" name="diff2" option="erase" format="tustep"
+            >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff2.tf</variable>
         <!--        <variable type="permanent-file" name="diff2" option="erase" format="tustep"
             >file:///C:/Users/bruening.FDH-FFM/txstep/ve/diff2.tf</variable>
         <variable type="permanent-file" name="diff3" option="erase" format="tustep"
@@ -53,7 +60,7 @@
         <variable type="permanent-file" name="kafka-wdiff" code="utf8" option="erase"
             >file:///C:/Users/bruening.FDH-FFM/github/gerritbruening/texthist-data/kafka/kafka-wdiff.txt</variable>
     </variables>
-    <transform source="kkap" destination="kkap-c">
+    <transform source="kkap-unem-x" destination="kkap-unem" save-params="par-kkap">
         <pass>
             <modify>
                 <exchange>
@@ -78,6 +85,18 @@
                             <search-string>#\[2014\]</search-string>
                             <replacement-string>--</replacement-string>
                         </string-pair>
+                        <string-pair>
+                            <search-string>{{TEI*}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{kaLine*}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{/kaLine}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
                     </exchange-table>
                 </exchange>
             </modify>
@@ -101,6 +120,7 @@
         <remove-blanks where="both"/>
         <suppress-blank-lines/>
     </transform>
+    <transform source="kkap" destination="kkap-c" take-params="par-kkap"/>
     <transform source="$dta-x" destination="$intmedfile" save-params="$par" mode="+">
         <define-text-units>
             <text-unit-start>
@@ -389,7 +409,18 @@
         <suppress-blank-lines/>
         <output-records max-length="120"/>
     </transform>-->
-    <compare versiona="kkap-c" versionb="dta-t" variants="diff1" listing="-" type="corrections">
+    <compare versiona="kkap-unem" versionb="kkap-c" variants="diff1" listing="-" type="corrections">
+        <compare-units mode="word"/>
+        <locations abbreviate="no" word-number="always"/>
+        <add-context>
+            <omission length-before="0" length-lemma="99" length-after="0"/>
+            <replacement length-before="0" length-lemma="99" length-after="0"/>
+            <insertion length-before="1" length-after="0"/>
+        </add-context>
+        <pos-ind-b value="yes"/>
+        <version-id>KA emend</version-id>
+    </compare>
+    <!--<compare versiona="kkap-unem" versionb="dta-t" variants="diff2" listing="-" type="corrections">
         <compare-units mode="word"/>
         <locations abbreviate="no" word-number="always"/>
         <add-context>
@@ -400,7 +431,7 @@
         <pos-ind-b value="yes"/>
         <version-id>EA</version-id>
         <select-area versiona="1.3-143.46,99" versionb="1.3-3.42/03,11"/>
-    </compare>
+    </compare>-->
     <!--<compare versiona="$dta-t" versionb="$zeno-t" variants="$diff1" listing="-">
         <compare-units mode="word"/>
         <locations abbreviate="no" word-number="always"/>
@@ -463,29 +494,29 @@
         <pos-ind-b value="yes"/>
         <version-id>Krause</version-id>
     </compare>-->
-    <collate source="kkap-c" mode="single-witness" diff-file="diff1" listing="$diff-listing"
+    <collate source="kkap-unem" mode="single-witness" diff-file="diff1" listing="$diff-listing"
         special="code">
         <list lines="all"/>
         <var-marks id-text="=" missing-text=" " id-var="id-prev"/>
     </collate>
-    <!--<display file="$diff-listing" type="listing" mode="ps-landscape"/>-->
+    <display file="$diff-listing" type="listing" mode="ps-landscape"/>
     <!-- diffs to wdiff -->
-    <transform source="diff1" destination="kafka-wdiff">
+    <!--<transform source="diff1" destination="kafka-wdiff">
         <pass>
             <modify>
                 <exchange>
                     <exchange-table>
-                        <!-- replacement -->
+                        <!-\- replacement -\->
                         <string-pair>
                             <search-string>*(EA)\[{|}*{|}\]{{*}}={|}*</search-string>
                             <replacement-string>PSEUDOTEXT \[-{=2=}-\] \{+{=4=}+\} PSEUDOTEXT</replacement-string>
                         </string-pair>
-                        <!-- addition -->
+                        <!-\- addition -\->
                         <string-pair>
                             <search-string>*(EA)\[* :: \]{{*}}+{|}*</search-string>
                             <replacement-string>PSEUDOTEXT \{+{=2=}+\} PSEUDOTEXT</replacement-string>
                         </string-pair>
-                        <!-- deletion -->
+                        <!-\- deletion -\->
                         <string-pair>
                             <search-string>*(EA)PSEUDOTEXT \[{|}*{|}\]{{*}}-{]} PSEUDOTEXT</search-string>
                             <replacement-string>\{-{=2=}-\}</replacement-string>
@@ -531,5 +562,5 @@
                 </exchange>
             </modify>
         </pass>
-    </transform>
+    </transform>-->
 </script>
