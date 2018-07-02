@@ -137,16 +137,18 @@ On the whole it still seems that the original code is sufficient for further pro
 ## Interprete text and app code in terms of TEI
 Now, in terms of TEI XML the text and apparatus data in combination mean the following:
 
-         <pb n="7"/>
-         <p><lb n="2"/>Jemand mußte Josef K. verleumdet haben, denn ohne<lb
-               n="3"/>daß er etwas Böses getan hätte, <subst>
-               <del>war</del>
-               <add>wurde</add>
-            </subst> er eines Morgens<lb n="4"/><subst>
-               <del>gefangen</del>
-               <add>verhaftet</add>
-            </subst>. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
-            <!-- ... --></p>
+```xml
+<pb n="7"/>
+<p><lb n="2"/>Jemand mußte Josef K. verleumdet haben, denn ohne<lb
+      n="3"/>daß er etwas Böses getan hätte, <subst>
+      <del>war</del>
+      <add>wurde</add>
+   </subst> er eines Morgens<lb n="4"/><subst>
+      <del>gefangen</del>
+      <add>verhaftet</add>
+   </subst>. Die Köchin der Frau Grubach, seiner Zimmervermieterin,
+   <!-- ... --></p>
+```            
             
             
 ## software
