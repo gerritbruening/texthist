@@ -12,5 +12,5 @@ These three prints are:
 * C.3 4 (final edition's vol. 4, octavo format)
 
 A corrected copy of C.1 served as basis for both of the latter editions.
-This corrected copy is lost but may be reconstructed from the variants shared by C.2α and C.3.
+This corrected copy is lost but may partially be reconstructed from the variants shared by C.2α and C.3.
 The script compares the variants and copy them to separate files, depending on whether a reading is shared by the other of the two prints or not.
