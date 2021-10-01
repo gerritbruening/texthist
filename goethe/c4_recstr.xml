@@ -2,29 +2,233 @@
 <script xmlns="http://www.xstep.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <variables>
         <variable type="execution-file" name="exec"
-            >file:///c:/Users/gerri/txstep/ueb/txstep.tu</variable>
-        <variable type="permanent-file" name="source"
-            >file:///c:/Users/gerri/txstep/ve/diff</variable>
-        <variable type="permanent-file" name="version-a"
-            >file:///c:/Users/gerri/txstep/txt/c14.tf</variable>
-        <variable type="permanent-file" name="diff-nrd" option="erase"
-            >file:///c:/Users/gerri/txstep/ve/diff-nrd.tf</variable>
-        <variable type="permanent-file" name="diff-gle" option="erase"
-            >file:///c:/Users/gerri/txstep/ve/diff-gle.tf</variable>
-        <variable type="permanent-file" name="diff-2a" option="erase"
-            >file:///c:/Users/gerri/txstep/ve/diff-2a.tf</variable>
-        <variable type="permanent-file" name="diff-3" option="erase"
-            >file:///c:/Users/gerri/txstep/ve/diff-3.tf</variable>
-        <variable type="permanent-file" name="diff-both" option="erase"
-            >file:///c:/Users/gerri/txstep/ve/diff-2_3.tf</variable>
-        <variable type="permanent-file" name="lost" option="erase"
-            >file:///c:/Users/gerri/txstep/txt/verlorener_z.tf</variable>
+            >file:///C:/Users/gerrit.bruening/txstep/ueb/txstep.tu</variable>
+        <char-group name="ok">?{-}{{}}%</char-group>
+        <char-group name="ti">?{-}{{!/}}%</char-group>
+        <variable type="scratch-file" name="par"/>
+        <variable type="scratch-file" name="par2"/>
+        <variable type="permanent-file" name="c14-x" code="utf8"
+            >file:///C:/Users/gerrit.bruening/github/faustedition/faust-xml/xml/print/C(1)4_IIIB24.xml</variable>
+        <variable type="permanent-file" name="c2a4-x" code="utf8"
+            >file:///C:/Users/gerrit.bruening/github/faustedition/faust-xml/xml/print/C(2a)4_IIIB28.xml</variable>
+        <variable type="permanent-file" name="c34-x" code="utf8"
+            >file:///C:/Users/gerrit.bruening/github/faustedition/faust-xml/xml/print/C(3)4_IIIB27.xml</variable>
+        <variable type="permanent-file" name="c14" format="tustep" option="erase"
+            >file:///C:/Users/gerrit.bruening/txstep/txt/c14.tf</variable>
+        <variable type="permanent-file" option="erase" name="intmedfile" format="tustep"
+            >file:///C:/Users/gerrit.bruening/txstep/txt/intmedfile.tf</variable>
+        <variable type="permanent-file" name="c2a4" format="tustep" option="erase"
+            >file:///C:/Users/gerrit.bruening/txstep/txt/c2a4.tf</variable>
+        <variable type="permanent-file" name="c34" format="tustep" option="erase"
+            >file:///C:/Users/gerrit.bruening/txstep/txt/c34.tf</variable>
+        <!-- define ve output file -->
+        <variable type="permanent-file" name="vec4" option="erase" format="tustep"
+            >file:///C:/Users/gerrit.bruening/txstep/ve/vec4.tf</variable>
+        <variable type="permanent-file" name="diff-nrd" option="erase" format="tustep"
+            >file:///C:/Users/gerrit.bruening/txstep/ko/diff-nrd.tf</variable>
+        <variable type="permanent-file" name="diff-gle" option="erase" format="tustep"
+            >file:///C:/Users/gerrit.bruening/txstep/ko/diff-gle.tf</variable>
+        <variable type="permanent-file" name="diff-2a" option="erase" format="tustep"
+            >file:///C:/Users/gerrit.bruening/txstep/ko/diff-2a.tf</variable>
+        <variable type="permanent-file" name="diff-3" option="erase" format="tustep"
+            >file:///C:/Users/gerrit.bruening/txstep/ko/diff-3.tf</variable>
+        <variable type="permanent-file" name="diff-both" option="erase" format="tustep"
+            >file:///C:/Users/gerrit.bruening/txstep/ko/diff-2_3.tf</variable>
+        <variable type="permanent-file" name="lost" option="erase" format="tustep"
+            >file:///C:/Users/gerrit.bruening/txstep/txt/verlorener_z.tf</variable>
         <char-group name="os">?{-}}}</char-group>
     </variables>
-    <transform source="source" destination="diff-nrd" option="erase" mode="+"/>
 
+    <transform source="$c14-x" destination="$intmedfile" save-params="$par">
+        <define-text-units>
+            <text-unit-start>
+                <comparison-table>
+                    <exclusion-string>{{/</exclusion-string>
+                    <comparison-string>{{</comparison-string>
+                </comparison-table>
+            </text-unit-start>
+        </define-text-units>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <exception-string>%{%}</exception-string>
+                        <!-- Akzente -->
+                        <exception-string>#.?</exception-string>
+                        <!-- frz. Anführungszeichen -->
+                        <string-pair>
+                            <search-string>{1-0} }}</search-string>
+                            <replacement-string>}}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>#\[2019\]</search-string>
+                            <replacement-string>'</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>#\[2013\]</search-string>
+                            <replacement-string>--</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>#\[2014\]</search-string>
+                            <replacement-string>--</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>#.,</search-string>
+                            <replacement-string>"</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>#.'</search-string>
+                            <replacement-string>"</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{{0}/orig}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{title}}*{{/title}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{pb{00}{c:ok}/}}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{{00}{c:ok}{[} {]}{00}{c:ok}}}</search-string>
+                            <replacement-string>+</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{{00}{c:ti}}} {{/{+2=}}}</search-string>
+                            <replacement-string> </replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>{{supplied+reason="printing-error"}}{|}*{|}{{/supplied}}</search-string>
+                            <replacement-string>{=2=}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{choice}}*{{sic}}{|}*{|}{{/sic}}*{{corr*}}*{{/corr}}*{{/choice}}</search-string>
+                            <replacement-string>{=2=}</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <pass>
+            <modify>
+                <exchange>
+                    <exchange-table>
+                        <exception-string>%{%}</exception-string>
+                        <exception-string>#.?</exception-string>
+                        <exception-string>{{{0}/abbr}}</exception-string>
+                        <exception-string>{{{0}/emph}}</exception-string>
+                        <exception-string>{{{0}/hi}}</exception-string>
+                        <exception-string>{{{0}/sic}}</exception-string>
+                        <exception-string>{{{0}/unclear}}</exception-string>
+                        <string-pair>
+                            <search-string>}}</search-string>
+                            <replacement-string>}} </replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{{</search-string>
+                            <replacement-string> {{</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </exchange>
+            </modify>
+        </pass>
+        <remove-blanks where="both"/>
+        <!-- spaces am Zeilenanfang und am Zeilenende weg -->
+        <suppress-blank-lines/>
+        <!-- Leerzeilen (diese enthielten ggf. nur tags) entfernen -->
+        <output-records max-length="120"/>
+        <!-- max. Zeilenlänge für Prosa-Teile -->
+    </transform>
 
-    <transform source="source" destination="diff-gle'diff-2a'diff-3'diff-both" option="erase">
+    <transform source="intmedfile" destination="c14" save-params="$par2" mode="+">
+        <define-text-units>
+            <text-unit-start>
+                <comparison-table>
+                    <exclusion-string>{{abbr}}</exclusion-string>
+                    <exclusion-string>{{emph}}</exclusion-string>
+                    <exclusion-string>{{hi}}</exclusion-string>
+                    <exclusion-string>{{hi+</exclusion-string>
+                    <exclusion-string>{{l}}</exclusion-string>
+                    <exclusion-string>{{l+</exclusion-string>
+                    <exclusion-string>{{s}}</exclusion-string>
+                    <exclusion-string>{{seg}}</exclusion-string>
+                    <exclusion-string>{{sic}}</exclusion-string>
+                    <exclusion-string>{{unclear}}</exclusion-string>
+                    <comparison-string>{{</comparison-string>
+                </comparison-table>
+            </text-unit-start>
+        </define-text-units>
+        <new-line-before>
+            <!-- za -->
+            <search-table>
+                <exception-string>{{abbr}}</exception-string>
+                <exception-string>{{emph}}</exception-string>
+                <exception-string>{{hi}}</exception-string>
+                <exception-string>{{hi+</exception-string>
+                <exception-string>{{s}}</exception-string>
+                <exception-string>{{seg}}</exception-string>
+                <exception-string>{{unclear}}</exception-string>
+                <exception-string>{{sic}}</exception-string>
+                <exception-string>{{/</exception-string>
+                <search-string>{{lg*}} {{l</search-string>
+                <search-string>{{</search-string>
+            </search-table>
+        </new-line-before>
+    </transform>
+
+    <transform source="c2a4-x" destination="c2a4" take-params="par" mode="+"/>
+
+    <transform source="c34-x" destination="c34" take-params="par" mode="+"/>
+
+    <compare versiona="c14" versionb="c2a4" variants="vec4" listing="-" type="corrections">
+        <compare-units mode="word"/>
+        <locations abbreviate="no" word-number="always"/>
+        <add-context>
+            <omission length-before="0" length-lemma="99" length-after="0"/>
+            <replacement length-before="0" length-lemma="99" length-after="0"/>
+            <insertion length-before="1" length-after="0"/>
+        </add-context>
+        <pos-ind-b value="yes"/>
+        <version-id>C2</version-id>
+        <version-sort-val value="1"/>
+    </compare>
+
+    <compare versiona="c14" versionb="c34" variants="vec4" listing="-" type="corrections"
+        option="append">
+        <compare-units mode="word"/>
+        <locations abbreviate="no" word-number="always"/>
+        <add-context>
+            <omission length-before="0" length-lemma="99" length-after="0"/>
+            <replacement length-before="0" length-lemma="99" length-after="0"/>
+            <insertion length-before="1" length-after="0"/>
+        </add-context>
+        <pos-ind-b value="yes"/>
+        <version-id>C3</version-id>
+        <version-sort-val value="2"/>
+    </compare>
+
+    <sort source="vec4" destination="vec4">
+        <sort-field num="1" start="1" length="17" order="ascending"/>
+        <sort-field num="2" start="37" length="2"/>
+        <!--  1-17: starting pos. of lemma ,18-34: end position of lemma, 35: type of reference (whole line or words in a line), 
+            36:  2 = omission, 3 = replacement, 4 = insertion,  37-38: version number for sorting, 
+            39-41: continuation lines for long variants,42-44: Pointer to 1st character after context info -->
+    </sort>
+
+    <transform source="vec4" destination="diff-nrd" option="erase" mode="+"/>
+
+    <transform source="vec4" destination="diff-gle'diff-2a'diff-3'diff-both" option="erase">
         <pass name="shorten">
             <!-- remove first 44 characters of each line -->
             <reassemble>
@@ -196,5 +400,5 @@
         </at-end-of-data>
         <suppress-blank-lines/>
     </transform>
-    <correct source="version-a" destination="lost" corrections="diff-gle" option="erase"/>
+    <!--<correct source="c14" destination="lost" corrections="diff-gle" option="erase"/>-->
 </script>
