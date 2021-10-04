@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<script xmlns="http://www.xstep.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!-- Varianten aufteilen in Anfangsumlaute / Satzzeichen / Orthographica / Apparateintrag -->
+    <variables>
+        <variable type="execution-file" name="execute">file:///C:/Users/gerrit.bruening/txstep/ueb/txstep.tu</variable>
+        <variable type="permanent-file" name="source">file:///C:/Users/gerrit.bruening/txstep/ve/veaawa.tf</variable>
+        <variable type="permanent-file" name="dest1" option="erase">file:///C:/Users/gerrit.bruening/txstep/ko/duwrest</variable>
+        <variable type="permanent-file" name="dest2" option="erase">file:///C:/Users/gerrit.bruening/txstep/ko/duwuml</variable>
+        <variable type="permanent-file" name="dest3" option="erase">file:///C:/Users/gerrit.bruening/txstep/ko/duwintp</variable>
+        <variable type="permanent-file" name="dest4" option="erase">file:///C:/Users/gerrit.bruening/txstep/ko/duworth</variable>
+        <variable type="permanent-file" name="dest5" option="erase">file:///C:/Users/gerrit.bruening/txstep/ko/duwsync</variable>
+        <variable type="permanent-file" name="dest6" option="erase">file:///C:/Users/gerrit.bruening/txstep/ko/duwdative</variable>
+        <variable type="permanent-file" name="dest7" option="erase">file:///C:/Users/gerrit.bruening/txstep/ko/duwpar</variable>
+        <variable type="permanent-file" name="duwrest-t" code="utf8" option="erase" format="system"
+            >file:///C:/Users/gerrit.bruening/github/gerritbruening/texthist-data/goethe-duw/duwrest.txt</variable>
+        <char-group name="pu">.,;:\?!()/­­</char-group>
+    </variables>
+
+    <transform source="$source" destination="$dest1'$dest2'$dest3'$dest4'$dest5'$dest6'$dest7">
+        <pass>
+            <examine-text>
+                <examine-text-from select="first" delimiter="include">
+                    <search-table>
+                        <search-string>\[</search-string>
+                    </search-table>
+                </examine-text-from>
+                <normalize-text-to-examine>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>\Ä</search-string>
+                            <replacement-string>Ae</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\Ö</search-string>
+                            <replacement-string>Oe</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\Ü</search-string>
+                            <replacement-string>Ue</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </normalize-text-to-examine>
+                <select>
+                    <text-contains>
+                        <search-table>
+                            <search-string>\[*\]={+2=}{]}</search-string>
+                        </search-table>
+                    </text-contains>
+                </select>
+                <when-selected>
+                    <output file-num="2"/>
+                    <get-next-unit/>
+                </when-selected>
+            </examine-text>
+        </pass>
+
+        <pass>
+            <examine-text>
+                <examine-text-from select="first" delimiter="include">
+                    <search-table>
+                        <search-string>\[</search-string>
+                    </search-table>
+                </examine-text-from>
+                <normalize-text-to-examine>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>{c:pu}</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <!--<string-pair>
+                            <search-string>_</search-string>
+                            <replacement-string> </replacement-string>
+                        </string-pair>-->
+                    </exchange-table>
+                </normalize-text-to-examine>
+                <select>
+                    <text-contains>
+                        <search-table>
+                            <search-string>\[*\]={+2=}{]}</search-string>
+                        </search-table>
+                    </text-contains>
+                </select>
+                <when-selected>
+                    <output file-num="3"/>
+                    <get-next-unit/>
+                </when-selected>
+            </examine-text>
+        </pass>
+        
+        <pass>
+            <examine-text>
+                <select>
+                    <text-contains>
+                        <search-table>
+                            <search-string>+{c:pu}</search-string>
+                            <search-string>\[{c:pu}\]-</search-string>
+                            <search-string>+#\[2014\]</search-string>
+                            <search-string>\[#\[2014\]\]-</search-string>
+                        </search-table>
+                    </text-contains>
+                </select>
+                <when-selected>
+                    <output file-num="3"/>
+                    <get-next-unit/>
+                </when-selected>
+            </examine-text>
+        </pass>
+        
+        <pass>
+            <examine-text>
+                <examine-text-from select="first" delimiter="include">
+                    <search-table>
+                        <search-string>\[</search-string>
+                    </search-table>
+                </examine-text-from>
+                <normalize-text-to-examine>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>aa</search-string>
+                            <replacement-string>a</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>ck</search-string>
+                            <replacement-string>k</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>annig</search-string>
+                            <replacement-string>annich</replacement-string>
+                        </string-pair>
+                        <!--<string-pair>
+                            <search-string>c</search-string>
+                            <replacement-string>k</replacement-string>
+                        </string-pair>-->
+                        <string-pair>
+                            <search-string>cti</search-string>
+                            <replacement-string>kti</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>för</search-string>
+                            <replacement-string>vör</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>ieen</search-string>
+                            <replacement-string>ien</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>inn</search-string>
+                            <replacement-string>in</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>kür</search-string>
+                            <replacement-string>kühr</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>kur</search-string>
+                            <replacement-string>cur</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>mm</search-string>
+                            <replacement-string>m</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>ss</search-string>
+                            <replacement-string>ß</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>s</search-string>
+                            <replacement-string>ß</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>th</search-string>
+                            <replacement-string>t</replacement-string>
+                        </string-pair>
+                        <!--<string-pair>
+                            <search-string>tir</search-string>
+                            <replacement-string>tier</replacement-string>
+                        </string-pair>-->
+                        <string-pair>
+                            <search-string>tz</search-string>
+                            <replacement-string>z</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>y</search-string>
+                            <replacement-string>i</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>gieb</search-string>
+                            <replacement-string>gib</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>{\A}</search-string>
+                            <replacement-string>{=1-}</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>'</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>-</search-string>
+                            <replacement-string/>
+                        </string-pair>
+                        <!-- zusammen getrennt -->
+                        <string-pair>
+                            <search-string> </search-string>
+                            <replacement-string></replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </normalize-text-to-examine>
+                <select>
+                    <text-contains>
+                        <search-table>
+                            <search-string>\[*\]={+2=}{]}</search-string>
+                        </search-table>
+                    </text-contains>
+                </select>
+                <when-selected>
+                    <output file-num="4"/>
+                    <get-next-unit/>
+                </when-selected>
+            </examine-text>
+        </pass>
+        <pass>
+            <examine-text>
+                <examine-text-from select="first" delimiter="include">
+                    <search-table>
+                        <search-string>\[</search-string>
+                    </search-table>
+                </examine-text-from>
+                <normalize-text-to-examine>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>\Aeltern</search-string>
+                            <replacement-string>\Eltern</replacement-string>
+                        </string-pair>
+                        <!-- ahnden vs. ahnen -->
+                        <string-pair>
+                            <search-string>\Ahnd</search-string>
+                            <replacement-string>\Ahn</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\ahnd</search-string>
+                            <replacement-string>\ahn</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\Ca</search-string>
+                            <replacement-string>\Ka</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>\ca</search-string>
+                            <replacement-string>\ka</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>Lilli</search-string>
+                            <replacement-string>Lili</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>tür</search-string>
+                            <replacement-string>tur</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>ider</search-string>
+                            <replacement-string>ieder</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string> </search-string>
+                            <replacement-string></replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </normalize-text-to-examine>
+                <select>
+                    <text-contains>
+                        <search-table>
+                            <search-string>\[*\]={+2=}{]}</search-string>
+                        </search-table>
+                    </text-contains>
+                </select>
+                <when-selected>
+                    <output file-num="4"/>
+                    <get-next-unit/>
+                </when-selected>
+            </examine-text>
+        </pass>
+
+        <!-- Synkope -->
+        <pass>
+            <examine-text>
+                <examine-text-from select="first" delimiter="include">
+                    <search-table>
+                        <search-string>\[</search-string>
+                    </search-table>
+                </examine-text-from>
+                <normalize-text-to-examine>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>dene</search-string>
+                            <replacement-string>dne</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>deren</search-string>
+                            <replacement-string>dern</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>ehn</search-string>
+                            <replacement-string>ehen</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>gn</search-string>
+                            <replacement-string>gen</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>heren</search-string>
+                            <replacement-string>hern</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>len</search-string>
+                            <replacement-string>eln</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>beren</search-string>
+                            <replacement-string>bren</replacement-string>
+                        </string-pair>
+                        <!-- inneren vs. innern -->
+                        <string-pair>
+                            <search-string>nnr</search-string>
+                            <replacement-string>nner</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>scheren</search-string>
+                            <replacement-string>schern</replacement-string>
+                        </string-pair>
+                        <!-- unsres vs. unsers -->
+                        <string-pair>
+                            <search-string>sre</search-string>
+                            <replacement-string>ser</replacement-string>
+                        </string-pair>
+                        <string-pair>
+                            <search-string>uern</search-string>
+                            <replacement-string>uren</replacement-string>
+                        </string-pair>
+                    </exchange-table>
+                </normalize-text-to-examine>
+                <select>
+                    <text-contains>
+                        <search-table>
+                            <search-string>\[*\]={+2=}{]}</search-string>
+                        </search-table>
+                    </text-contains>
+                </select>
+                <when-selected>
+                    <output file-num="5"/>
+                    <get-next-unit/>
+                </when-selected>
+            </examine-text>
+        </pass>
+        
+        <pass>
+            <examine-text>
+                <examine-text-from select="first" delimiter="include">
+                    <search-table>
+                        <search-string>\[</search-string>
+                    </search-table>
+                </examine-text-from>
+                <normalize-text-to-examine>
+                    <exchange-table>
+                        <string-pair>
+                            <search-string>en</search-string>
+                            <replacement-string>em</replacement-string>
+                        </string-pair>                        
+                    </exchange-table>
+                </normalize-text-to-examine>
+                <select>
+                    <text-contains>
+                        <search-table>
+                            <search-string>\[*\]={+2=}{]}</search-string>
+                        </search-table>
+                    </text-contains>
+                </select>
+                <when-selected>
+                    <output file-num="6"/>
+                    <get-next-unit/>
+                </when-selected>
+            </examine-text>
+        </pass>        
+        
+        <pass>
+            <examine-text>
+                <select>
+                    <text-contains>
+                        <search-table>
+                            <search-string>+{{/p}}{00} {{p}}{]}</search-string>
+                        </search-table>
+                    </text-contains>
+                </select>
+                <when-selected>
+                    <output file-num="7"/>
+                    <get-next-unit/>
+                </when-selected>
+                <otherwise>
+                    <output file-num="1"/>
+                    <get-next-unit/>
+                </otherwise>
+            </examine-text>
+        </pass>
+    </transform>
+    <!--<display file="$dest1"/>
+    <display file="$dest2"/>
+    <display file="$dest3"/>
+    <display file="$dest4"/>-->
+    <transform source="dest1" destination="duwrest-t"/>
+</script>
