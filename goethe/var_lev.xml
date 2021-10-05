@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script xmlns="http://www.xstep.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <variables>
+        <variable type="execution-file" name="execute"
+            >file:///C:/Users/gerrit.bruening/txstep/ueb/txstep.tu</variable>
+        <variable type="permanent-file" name="source"
+            >file:///C:/Users/gerrit.bruening/txstep/ve/ved1s3bare.tf</variable>
+        <variable type="permanent-file" name="dest" format="tustep" option="erase"
+            >file:///C:/Users/gerrit.bruening/txstep/ko/ved1s3-lev.tf</variable>
+        <variable type="permanent-file" name="diffdistsort" format="tustep" option="erase"
+            >file:///C:/Users/gerrit.bruening/txstep/ko/ved1s3-levsort.tf</variable>
+    </variables>
+    <tuscript><![CDATA[
+= {} 
+access file: read/records "source" sn.zn/un, text
+file "dest" 
+loop/99999
+read/next/exit file
+if (text .ew. "]-") cycle
+if (text .ct. "~\]+~") cycle
+set lemma = extract (text, "~\[{[}?~", "~\]=~")
+set variant = extract (text, "~\]={[}?~",0)
+set lev = distance_exact (lemma, variant)       
+data {text} :: distance = {lev}
+endloop
+endaccess file
+endfile
+]]>
+    </tuscript>
+
+    <prepare-sort source="dest" destination="-std-" option="erase">
+        <define-prep-mode>
+            <no-ref/>
+        </define-prep-mode>
+        <define-sort-keys>
+            <sort-key num="1" length="3">
+                <sort-key-start delimiter="exclude">
+                    <search-table>
+                        <search-string>distance = </search-string>
+                    </search-table>
+                </sort-key-start>
+                <zero-filled digits="3"/>
+            </sort-key>
+            <sort-key num="2" length="20">
+                <sort-key-start delimiter="exclude">
+                    <search-table>
+                        <search-string>\[</search-string>
+                    </search-table>
+                </sort-key-start>
+                <sort-key-end>
+                    <search-table>
+                        <search-string>\]</search-string>
+                    </search-table>
+                </sort-key-end>
+            </sort-key>
+        </define-sort-keys>
+    </prepare-sort>
+
+    <sort source="-std-" destination="-std-" option="erase">
+        <sort-field num="1" start="1" length="23" remove-after-sort="yes"/>
+    </sort>
+
+    <transform source="-std-" destination="diffdistsort" option="erase" mode="+"> </transform>
+
+</script>
